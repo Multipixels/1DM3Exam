@@ -1,0 +1,2540 @@
+\documentclass{exam}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    }
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
+\newcommand{\Div}[1]{\ (\mathrm{div}\ #1)}
+\DeclareMathOperator{\lcm}{lcm}
+
+\begin{document}
+
+\begin{center}
+\fbox{\parbox{6in}{\centering
+\textbf{CS1DM3: Discrete Mathematics for Computer Science \hfill April 9th 2022}\\[0pt]
+\hfill Made by Richie\\[5pt]
+{\Large{Practice Problems for Exam - Solutions}}\\[5pt]
+\textit{Name:} \hfill \textit{ID:\hspace{25mm}}
+}}
+\end{center}
+
+%----------------------------------------------------------------------------------------
+
+%	CHAPTER 1
+
+%----------------------------------------------------------------------------------------
+
+
+\vspace{10pt}
+{\Large Chapter 1}
+\vspace{2pt}
+\begin{questions}
+
+\question {Construct a truth table for  \( (p \lor \neg q) \implies (p \land q ) \). (1.1)}
+
+\begin{displaymath}
+\begin{array}{|c|c|c|c|c|c|}
+{p} & {q} & {\neg q} & {(p \lor \neg q)} & {(p \land q)} & { (p \lor \neg q) \implies (p \land q)}
+\\
+\hline % Put a horizontal line between the table header and the rest.
+F & F & T & T & F & F\\
+F & T & F & F & F & T\\
+T & F & T & T & F & F\\
+T & T & F & T & T & T\\
+\end{array}
+\end{displaymath}
+
+\question Translate the following sentences into a propositional statement. (1.2)
+\begin{subparts}
+
+\subpart You can go on the roller coaster if and only if you are taller than Bryan and older than Rebecca.
+\begin{center}
+Let \(p\) represent the ability to go on the roller coaster, \(q\) represent whether you are taller than Bryan, and \(r\) represent whether you are older than Rebecca.\\
+\( p \ \Longleftrightarrow (q \land r) \)
+\end{center}
+
+\subpart The mayor will keep his promises if he is re-elected as mayor.
+\begin{center}
+Let \(p\) represent whether the mayor keeps his promises and \(q\) represent whether the mayor is re-elected.\\
+\( q \ \implies p \)
+\end{center}
+
+\subpart The mayor will keep his promises only if he is re-elected as mayor.
+\begin{center}
+Let \(p\) represent whether the mayor keeps his promises and \(q\) represent whether the mayor is re-elected.\\
+\( p \ \implies q \)
+\\ \vspace{5px} \href{https://www.khanacademy.org/test-prep/lsat/lsat-lessons/logic-toolbox-new/a/logic-toolbox--if-and-only-if}{\underline{Here's a good explanation of "if" vs "only if".}}
+\end{center}
+
+\end{subparts}
+
+\question {Determine if \( (\neg p \lor \neg q \lor r) \land (\neg p \lor q \lor \neg s) \land (p \lor \neg q \lor \neg s) \land (\neg p \lor \neg r \lor \neg s) \land (p \lor q \lor \neg r) \land (p \lor \neg r \lor \neg s) \) is satisfiable. (1.3)}
+
+\begin{center}
+This can be done using truth tables, but it's tedious!! Set a variable to T and work your way down. If that doesn't work, try the F route.
+
+Let \(p = T\).
+
+\( (F \lor \neg q \lor r) \land (F \lor q \lor \neg s) \land T \land (F \lor \neg r \lor \neg s) \land T \land T \)
+
+\( (\neg q \lor r) \land (q \lor \neg s) \land (\neg r \lor \neg s) \)
+
+Let \(q = T\).
+
+\( (F \lor r) \land T \land (\neg r \lor \neg s) \)
+
+\( (r) \land (\neg r \lor \neg s) \)
+
+Let \(r = T, s = F\)
+
+\( T \land (F \lor T) \)
+
+\( T \)
+
+The statement is satisfiable when \( p = T, q = T, r = T, s = F \).
+
+\end{center}
+
+\newpage
+
+\question {Prove that \(  (p \lor q) \land (\neg p \lor r) \implies q \lor r \) only using equivalences (no rules of inferences!) (1.3)}
+
+\begin{center}
+
+\textcolor{red}{There were two typos in the original question, my apologies! The typo is fixed in the solution set.}
+
+\(  (p \lor q) \land (\neg p \lor r) \implies q \lor r \)\\
+\(  \neg[(p \lor q) \land (\neg p \lor r)] \lor (q \lor r) \)\\
+\(  \neg(p \lor q) \lor \neg(\neg p \lor r) \lor q \lor r \)\\
+\(  (\neg p \land \neg q) \lor ( p \land \neg r) \lor q \lor r \)\\
+\(  (\neg p \land \neg q) \lor q \lor ( p \land \neg r) \lor r \)\\
+\(  [ (\neg p \lor q) \land (\neg q \lor q) ] \lor [ (p \lor r) \land (\neg r \lor r) ] \)\\
+\(  (\neg p \lor q) \lor (p \lor r) \)\\
+\(  \neg p \lor q \lor p \lor r \)\\
+\(  (\neg p \lor p) \lor q \lor r \)\\
+\(  T \lor q \lor r \)\\
+\(  T \)\\
+
+\end{center}
+
+\question {What are the negations of the following statements? (1.4)}
+\begin{subparts}
+\subpart \( \exists x (P(x) \implies Q(x)) \)
+
+\begin{center}
+\( \forall x (P(x) \land \neg Q(x)) \)
+\end{center}
+
+\subpart \( \forall y (P(y) \land Q(y) \implies R(y) \lor S(y)) \)
+
+\begin{center}
+\( \exists y (P(y) \land Q(y) \land \neg R(y) \land \neg S(y)) \)
+\end{center}
+
+\end{subparts}
+
+\question {Let \( P(x, y) \) be the statement "\(x\) is friends with \(y\), where the domain consists of the world human population. Use quantifiers to express these statements. (1.5)}
+\begin{subparts}
+\subpart { Tyler is friends with everybody in the world. }
+
+\begin{center}
+\( \forall y (P(Tyler, y)) \)
+\end{center}
+
+\subpart { Meredith is friends with Charlie. }
+
+\begin{center}
+\( P(Meredith, Charlie) \)
+\end{center}
+
+\subpart { Somebody is friends with everybody in the world. }
+
+\begin{center}
+\( \exists x \forall y (P(x, y)) \)
+\end{center}
+
+\subpart { Somebody is friends with somebody. }
+
+\begin{center}
+\( \exists x \exists y (P(x, y)) \)
+\end{center}
+
+\subpart { Everyone in the world is friends with somebody. }
+
+\begin{center}
+\( \forall x \exists y (P(x, y)) \)
+\end{center}
+
+\subpart { Nobody is friends with themselves. }
+
+\begin{center}
+\( \neg \exists x (P(x, x)) \)
+\\Alternate Answer: \( \forall x (\neg P(x, x)) \)
+\end{center}
+
+\end{subparts}
+
+\question {Determine if the following statements are valid. (1.5)}
+\begin{subparts}
+\subpart \( \exists x \forall y (xy = 1) \) where the domain is all real positive numbers.
+
+\begin{center}
+False. Suppose \(x = 1\). There exist \(y\) such that \(xy \neq 1\), (counterexample: \(y = 2\)), thus disproving the statement.
+\end{center}
+
+\subpart \( \forall x \exists y (xy = 1) \) where the domain is all real positive numbers.
+
+\begin{center}
+True. \(x = \frac{1}{y}\). \(x\) is a real positive number for all positive real \(y\).
+
+\vspace{5px} \textcolor{blue}{See Chapter 1.5, Example 4 if there's any confusion.}
+\end{center}
+
+\end{subparts}
+
+\newpage
+
+\question {Show that the premises "We'll stay home and watch TV or we'll go take a walk" and "We'll go take a walk if and only if it's nice outside" implies the conclusion "We'll stay home or it's nice outside."} (1.6)
+
+\begin{center}
+Let \(p\) represent staying home, \(q\) represent watching TV, \(r\) represent going on a walk, \(s\) represent that it's nice outside.
+
+\( (p \land q) \lor r\) and \( r \longleftrightarrow s\) implies the conclusion \(p \lor s\).
+
+1. \( (p \land q) \lor r\) Premise.
+
+2. \( r \longleftrightarrow s\) Premise.
+
+3. \( (r \implies s) \land (s \implies r)  \) Definition of bicondition on 2.
+
+4. \( r \implies s \) Simplification on 3.
+
+5. \( \neg r \lor s \) Definition of implication on 4.
+
+6. \( (p \lor r) \land (q \lor r) \) Distribution on 1.
+
+7. \( p \lor r \) Simplification on 6.
+
+8. \( p \lor s \) Resolution on 7 and 5.
+
+\end{center}
+
+\question {Show that the premises \( (p \land q) \lor r \) and \(r \implies s\) implies the conclusion \( p \lor s \).} (1.6)
+
+\begin{center}
+See question above for a method using resolution. This method will not use resolution.
+
+1. \( (p \land q) \lor r\) Premise.
+
+2. \( r \implies s\) Premise.
+
+3. \( \neg r \lor s \) Definition of implication on 2.
+
+4. \( \neg p \lor \neg r \lor p \lor s \) Addition on 3.
+
+5. \( (p \land r) \implies (p \lor s) \) Definition of implication on 4.
+
+6. \( (p \lor r) \land (q \lor r) \) Distribution on 1.
+
+7. \( (p \lor r) \) Simplification on 6.
+
+8. \( (p \lor s) \) Modus ponens on 5 and 7
+
+\end{center}
+
+\question {Prove or disprove the following statements. (1.7)}
+\begin{subparts}
+\subpart \( |a + b| = |a| + |b| \).
+
+\begin{center}
+
+False. Suppose \(a = 0.1, b = -0.1\).
+
+LS: \( |a+b| = |(0.1)+(-0.1)| = |0| = 0 \)
+
+RS: \( |a|+|b| = |(0.1)|+|(-0.1)| = 0.1 + 0.1 = 0.2 \)
+
+LS \(\neq\) RS.
+
+\end{center}
+
+\newpage
+
+\subpart \( |ab| = |a||b| \).
+
+\begin{center}
+
+Case 1: Suppose \(a \geq 0, b \geq 0 \).
+
+Then, \(|a| = a\) and \(|b| = b\).\\
+Since \( ab \geq 0 \), then \( |ab| = ab \)
+
+\( |a||b| = ab \)\\
+\( |ab| = ab \)
+
+Therefore, \( |ab| = |a||b| \).
+\vspace{5mm}
+
+Case 2: Suppose \(a < 0, b < 0 \).
+
+Then, \(|a| = -a\) and \(|b| = -b\).\\
+Since \( ab \geq 0 \), then \( |ab| = ab \).
+
+\( |a||b| = (-a)(-b) = ab \)\\
+\( |ab| = ab \)
+
+Therefore, \( |ab| = |a||b| \).
+\vspace{5mm}
+
+Case 3: Suppose \( a \geq 0, b < 0 \).
+
+Then, \(|a| = a\) and \(|b| = -b\).\\
+Since \( ab \leq 0 \), then \( |ab| = -ab \).
+
+\( |a||b| = (a)(-b) = -ab \)\\
+\( |ab| = -ab \)
+
+Therefore, \( |ab| = |a||b| \).
+\vspace{5mm}
+
+Case 4: Suppose \( a < 0, b \geq 0 \).
+
+WLOG, case 3.
+
+\end{center}
+
+\subpart \( \sqrt{2} \) is irrational.
+
+\begin{center}
+
+Suppose \(\sqrt{2}\) was rational. Then there exists two rational numbers, \(x\) and \(y\) such that they have no common factors and
+
+\(\frac{x}{y} = \sqrt{2}\)
+
+\(\frac{x^2}{y^2} = 2\)
+
+\(x^2 = 2y^2\)
+
+By the definition of an even number, this shows that \(x^2\) must be even.\\
+If \(x^2\) is even, \(x\) must be even. Suppose \(x = 2z\).
+
+\(4z^2 = 2y^2\)
+
+\(2z^2 = y^2\)
+
+By the definition of an even number, this shows that \(y^2\) must be even.\\
+If \(y^2\) is even, then \(y\) must be even.
+
+This is a contradiction, as we previously established that \(x\) and \(y\) must have no common factors. If \(x\) and \(y\) are both even, they must both have a common factor of two.
+
+By proof of contradiction, \(\sqrt{2}\) must be irrational.
+
+\end{center}
+
+\subpart If \( x\) is even, then \(x+n\) is odd for all odd numbers \(n\).
+
+\begin{center}
+
+By the definition of an even number, \(x = 2k\).\\
+By the definition of an odd number, \(x = 2k+1\).
+
+\(x+n\)
+\(2k + 2k + 1\)
+\(4k + 1\)
+\( 2(2k) + 1 \)
+\( 2j + 1 \)
+
+By the definition of an odd number, \(x+n\) must be odd.
+
+\end{center}
+
+\end{subparts}
+
+\newpage
+
+\question {True or False: There exists two irrational numbers \(x\) and \(y\) such that \(x^{y}\) is rational. (1.8) \\
+- If True, provide an example. \\
+- If False, prove it.} 
+
+\begin{center}
+
+Consider \(x = \sqrt{2}^{\sqrt{2}}\) and \(y = \sqrt{2} \).
+
+Proving that \( \sqrt{2}^{\sqrt{2}} \) is irrational is beyond the scope of this course. However, consider the following.
+
+Suppose \( \sqrt{2}^{\sqrt{2}} \) was rational. Then, we'd have an irrational \(x\) and an irrational \(y\) such that \(x^y\) is rational, concluding our proof.
+
+Otherwise, suppose \( \sqrt{2}^{\sqrt{2}} \) was irrational. Then, we would get the following.
+
+\((\sqrt{2}^{\sqrt{2}})^{\sqrt{2}} \)
+
+\((\sqrt{2}^{\sqrt{2} \cdot \sqrt{2}}) \)
+
+\((\sqrt{2}^{2}) \)
+
+\( 2 \)
+
+Using this proof, we have given one of two possible solutions. We don't know which one is true, but we know one of them must be true.
+
+\textcolor{blue}{Big props to the textbook for this proof, it's a tricky question! It's Example 11 in Chapter 1.8.}
+
+\end{center}
+
+%----------------------------------------------------------------------------------------
+
+%	CHAPTER 2
+
+%----------------------------------------------------------------------------------------
+
+\vspace{10pt}
+{\Large Chapter 2}
+\vspace{2pt}
+
+
+\question {What is the Cartesian product of \(A\) and \(B\) if \(A = \{1,2,3\}\) and \(B = \{b, c\}\)? (2.1) 
+
+\begin{center}
+\( \{ \{1,b\}, \{1,c\}, \{2,b\}, \{2,c\}, \{3,b\}, \{3,c\} \} \)
+\end{center}
+
+- Is \( A \times B \) = \( B \times A \)? \textcolor{red}{No.}\\
+- What is the Cartesian product of the sets \( \{1, 2\} \), \( \{x, y\} \), and \( \{a, b\} \)? }
+\begin{center}
+\( \{ \{1,x,a\}, \{1,x,b\}, \{1,y,a\}, \{1,y,b\}, \{2,x,a\}, \{2,x,b\}, \{2,y,a\}, \{2,y,b\} \} \)
+\end{center}
+
+\question {What is the cardinality of the power set of the set \( \{1,2,3,4,5\} \)? (2.2) \\
+
+\begin{center}
+The cardinality of a power set is \(2^n\), where \(n\) is the cardinality of the original set.
+
+Therefore, the cardinality of the power set is \(2^5\).
+\end{center}
+
+- What is the cardinality of the power set of \( A \times B \) if \(A = \{1,2,3\}\) and \(B = \{b, c\}\)? }
+
+\begin{center}
+The cardinality of a power set is \(2^n\), where \(n\) is the cardinality of the original set.
+
+The cardinality of \( A \times B \) is \(a * b\), where \(a\) is the cardinality of \(A\), and \(b\) is the cardinality of \(B\).
+
+Therefore, the cardinality of the power set is \(2^{3*2}\).
+\end{center}
+
+\newpage
+
+\question {Prove the following.} (2.2)
+\begin{subparts}
+\subpart {\( \overline{A \cap B} = \overline{A} \cup \overline{B} \).} 
+
+\begin{center}
+
+You cannot use De Morgan's Set Law to prove De Morgan's Set Law on the exam.
+
+\( \overline{A \cap B} = \overline{A} \cup \overline{B} \) if they are subsets of each other.
+
+\( \overline{A \cap B} \subseteq \overline{A} \cup \overline{B} \)
+
+\( x \in \overline{A \cap B} \)
+
+\( x \notin {A \cap B} \)
+
+\( \neg (x \in {A \cap B}) \)
+
+\( \neg ( (x \in A) \land (x \in B) ) \)
+
+\( \neg(x \in A) \lor \neg (x \in B) \)
+
+\( (x \notin A) \lor (x \notin B) \)
+
+\( (x \in \overline{A}) \lor (x \in \overline{B}) \)
+
+\( x \in \overline{A} \cup \overline{B} \)
+\vspace{5mm}
+
+\( \overline{A} \cup \overline{B} \subseteq \overline{A \cap B} \)
+
+\textcolor{blue}{Repeat previous process but backwards. (Please show your full work here too on the exam, but for the sake of time, I won't do it.)}
+
+\end{center}
+
+\subpart {\( A \cap (B \cup C) = (A \cap B) \cup (A \cap C) \).} 
+
+\begin{center}
+
+You cannot use Distributive Set law to prove Distributive Set law on the exam.
+
+\( A \cap (B \cup C) \subseteq (A \cap B) \cup (A \cap C) \)
+
+\( x \in A \cap (B \cup C)\)
+
+\( (x \in A) \land (x \in B \cup C)\)
+
+\( (x \in A) \land (x \in B \cup C)\)
+
+\( (x \in A) \land ((x \in B) \lor (x \in C))\)
+
+\( ((x \in A) \land (x \in B)) \lor ((x \in A) \land (x \in C))\)
+
+\( (x \in A \cap B) \lor (x \in A \cap C)\)
+
+\( x \in (A \cap B) \cup (A \cap C)\)
+
+\vspace{5mm}
+
+\( (A \cap B) \cup (A \cap C) \subseteq  A \cap (B \cup C) \)
+
+\textcolor{blue}{Repeat previous process but backwards. (Please show your full work here too on the exam, but for the sake of time, I won't do it.)}
+
+\end{center}
+
+\subpart {\( (A \cap B) \cup (A \cap \overline{B}) = A \).} 
+
+\begin{center}
+
+\( (A \cap B) \cup (A \cap \overline{B}) \)
+
+\( ((A \cap B) \cup A) \cap ((A \cap B) \cup \overline{B}) \)
+
+\( A \cap ((A \cup \overline{B}) \cap (B \cup \overline{B})) \)
+
+\( A \cap (A \cup \overline{B})  \)
+
+\( A \)
+
+\textcolor{blue}{This proof only uses the Distributive and Absorption set laws.}
+
+\end{center}
+
+\subpart {\( (A - B) - C = (A - C) - (B - C) \).} 
+
+\begin{center}
+
+\( (A - C) - (B - C) = (A - B) - C \)
+
+\( (A - C) - (B - C) \)
+
+\( (A \cap \overline{C}) - (B \cap \overline{C}) \)
+
+\( (A \cap \overline{C}) \cap (\overline{B} \cup C) \)
+
+\( (A \cap \overline{C} \cap \overline{B}) \cup (A \cap \overline{C} \cap C) \)
+
+\( (A \cap \overline{B} \cap \overline{C}) \cup (F) \)
+
+\( A \cap \overline{B} - C \)
+
+\( (A - B) - C \)
+
+\end{center}
+
+\newpage
+
+\subpart {\( (A \cup B) \subseteq (A \cup B \cup C) \).}
+
+\begin{center}
+
+\(x \in (A \cup B)\)
+
+\(x \in A \lor x \in B \)
+
+\(x \in A \lor x \in B \lor x \in C\)
+
+\(x \in (A \cup B \cup C) \)
+
+\textcolor{blue}{This proof uses the Addition rule of inference.}
+
+\end{center}
+
+\end{subparts}
+
+\question {Let \( A_i = \{0,1,2,3,4,...,i\}\). Find the following.} (2.2)
+\begin{subparts}
+\subpart { \( \cup_{i=0}^n A_i \) .}
+
+\begin{center}
+\( \{0,1,2,3,4,...n\} \)
+\end{center}
+
+\subpart { \( \cap_{i=0}^n A_i \) .}
+
+\begin{center}
+\( \{0\} \)
+\end{center}
+
+\subpart { \( \cup_{i=3}^n A_i \) .}
+
+\begin{center}
+\( \{0,1,2,3,4,...n\} \)
+\end{center}
+
+\subpart { \( \cap_{i=3}^n A_i \) .}
+
+\begin{center}
+\( \{0,1,2,3\} \)
+\end{center}
+
+\end{subparts}
+
+\question {Consider the multi-sets \( A = \{4 \cdot a, 3 \cdot b, 2 \cdot c\} \) and \( B = \{1 \cdot a, 2 \cdot c, 3 \cdot d\} \). (2.2)}
+\begin{subparts}
+\subpart { What is \( A \cup B \)? } 
+
+\begin{center}
+\( \{4 \cdot a, 3 \cdot b, 2 \cdot c, 3 \cdot d\} \)
+\end{center}
+
+\subpart { \( A \cap B \). }
+
+\begin{center}
+\( \{1 \cdot a, 2 \cdot c\} \)
+\end{center}
+
+\subpart { \( A + B \). } 
+
+\begin{center}
+\( \{5 \cdot a, 3 \cdot b, 4 \cdot c, 3 \cdot d\} \)
+\end{center}
+
+\subpart { \( A - B \). } 
+
+\begin{center}
+\( \{3 \cdot a, 3 \cdot b\} \)
+\end{center}
+
+\end{subparts}
+
+\question {Let \(f : \mathbb{R} \rightarrow \mathbb{Z} \) defined by \( f(x) = \lfloor \frac{x}{2} \rfloor \). Is this onto? Is this one-to-one?} (2.3)
+
+\begin{center}
+
+\textcolor{red}{There is a typos in the original question, my apologies! The typo is fixed in the solution set.}
+
+This function is not one-to-one. Take \(x_0 = 0, x_1 = 1\). 
+
+\(f(x_0) = f(x_1)\), therefore it cannot be one-to-one.
+\vspace{5px}
+
+This function is onto, because for every integer \(y\), there exists at least one \(x\) such that \(f(x) = y\). 
+
+To see this, note that \(f(x) = y\) if and only if \(\lfloor \frac{x}{2} \rfloor = y\).
+
+Let us represent \(\frac{x}{2}\) as \(n + k\), where \(n \in \mathbb{Z}\) and \(k \in [0,1)\). 
+
+\( y = \lfloor \frac{x}{2} \rfloor \)
+
+\( y = \lfloor n + k \rfloor \)
+
+\( y = n + \lfloor k \rfloor \)
+
+\( y = n \)
+
+\end{center}
+
+\newpage
+
+\question {Suppose \(g : A \rightarrow B \) and \(f : B \rightarrow C \), where \(f \circ g\) and \(f\) are injective. (2.3)}
+\begin{subparts}
+\subpart {Show that \(g\) must be injective, or give a counterexample.}
+
+\begin{center}
+
+To prove that \(g\) must be injective, we must show that, given \(x_1, x_2 \in A\), where \(g(x_1) = g(x_2)\), \(x_1 = x_2\).
+
+Since \(f \circ g\) is injective, given \(a_1, a_2 \in A\), if \(f(g(a_1)) = f(g(a_2))\), then \(a_1 = a_2\).
+
+Since \(f\) is injective, given \(b_1, b_2 \in B\), if \(f(b_1) = f(b_2)\), then \(b_1 = b_2\).
+
+Using this, we can conclude that \(g(a_1) = g(a_2)\).
+
+In addition, \(a_1 = a_2\) due to the injectivity of \(f \circ g\).
+
+Therefore, \(g\) must be injective.
+
+\end{center}
+\vspace{5px}
+
+\subpart {What if \(f \circ g\) and \(g\) are injective. Show that \(f\) must be injective, or give a counterexample.}
+
+\begin{center}
+
+To prove that \(f\) must be injective, we must show that, given \(x_1, x_2 \in B\), where \(f(x_1) = f(x_2)\), \(x_1 = x_2\).
+
+Since \(f \circ g\) is injective, given \(a_1, a_2 \in A\), if \(f(g(a_1)) = f(g(a_2))\), then \(a_1 = a_2\).
+
+Since \(g\) is injective, given \(b_1, b_2 \in A\), if \(g(b_1) = g(b_2)\), then \(b_1 = b_2\).
+
+Using this, we can conclude that \(g(a_1) = g(a_2)\).
+
+This proves that \(f\) must be injective, as for any \(f(g(a_1)) = f(g(a_2))\), \(g(a_1) = g(a_2)\).
+
+\end{center}
+
+\end{subparts}
+
+\question {Let \(g : \mathbb{Z} \times \mathbb{Z} \rightarrow \mathbb{Z} \) defined by \( g(m, n) = |m| - |n|\). Prove or disprove that this function is onto.} (2.3)
+
+\begin{center}
+
+To prove that \(g\) is onto, then there exists \(m, n \in \mathbb{Z}\) for all \(y \in \mathbb{Z}\) such that \(g(m,n) = y\).
+
+Fix m = 0. Then we have \(g = -|n|\).
+
+The range of \(g\) is therefore \(\{\mathbb{Z^-}, 0\} \).
+
+Fix n = 0. Then we have \(g = |m|\).
+
+The range of \(g\) is therefore \(\{0, \mathbb{Z^+}\} \).
+
+The union of these two ranges is \(\mathbb{Z}\), therefore proving that \(g\) is onto.
+
+\end{center}
+
+\question {Prove or disprove the following. (2.3)}
+\begin{subparts}
+\subpart {\( \lfloor 2x \rfloor = \lfloor x \rfloor + \lfloor x + \frac{1}{2} \rfloor \).}
+
+\begin{center}
+
+Let \(x = n + k\), such that \(n \in \mathbb{Z}, k \in [0, 1) \).
+
+\( \lfloor 2n + 2k \rfloor = \lfloor n + k \rfloor + \lfloor n + k + \frac{1}{2} \rfloor \)
+
+\( 2n + \lfloor 2k \rfloor = 2n + \lfloor k \rfloor + \lfloor k + \frac{1}{2} \rfloor \)
+\vspace{5px}
+
+Case 1: \(k \in [0, \frac{1}{2}) \)
+
+\( 2n + 0 = 2n + 0 + 0 \)
+\( 2n = 2n\)
+\vspace{5px}
+
+Case 2: \(k \in [\frac{1}{2}, 1) \)
+
+\( 2n + 1 = 2n + 0 + 1 \)
+\( 2n + 1 = 2n + 1\)
+
+\end{center}
+
+\subpart {\( \lfloor 4x \rfloor = \lfloor x \rfloor + \lfloor x + \frac{1}{4} \rfloor + \lfloor x + \frac{1}{2} \rfloor + \lfloor x + \frac{3}{4} \rfloor \).}
+
+\begin{center}
+
+\textcolor{blue}{This proof is almost exactly like the previous question, but you'll have 4 cases for \(k \in [0, \frac{1}{4}), [\frac{1}{4}, \frac{2}{4}), [\frac{2}{4}, \frac{3}{4}), [\frac{3}{4}, 1)\). The solution will be skipped because of this.}
+
+\end{center}
+
+\newpage
+
+\subpart { \( \lceil \frac{x}{2} \rceil = \lfloor \frac{x+1}{2} \rfloor \).}
+
+\begin{center}
+
+Case 1: \(x\) is even.
+
+Represent \(x\) as \(2n\), where \(n \in \mathbb{Z}\).
+
+\( \lceil \frac{2n}{2} \rceil = \lfloor \frac{2n}{2} + \frac{1}{2} \rfloor \)
+
+\( \lceil n \rceil = \lfloor n + \frac{1}{2} \rfloor \)
+
+\( n = n + \lfloor \frac{1}{2} \rfloor \)
+
+\( n = n \)
+\vspace{5px}
+
+Case 2: \(x\) is odd.
+
+Represent \(x\) as \(2n + 1\), where \(n \in \mathbb{Z}\).
+
+\( \lceil \frac{2n+1}{2} \rceil = \lfloor \frac{2n+1}{2} + \frac{1}{2} \rfloor \)
+
+\( \lceil \frac{2n}{2} + \frac{1}{2} \rceil = \lfloor \frac{2n}{2} + 1 \rfloor \)
+
+\( \lceil n + \frac{1}{2} \rceil = \lfloor n + 1 \rfloor \)
+
+\( n + \lceil \frac{1}{2} \rceil = n + 1 \)
+
+\( n + 1 = n + 1 \)
+
+\end{center}
+
+\subpart { Given an odd integer \(n\), \( \lceil \frac{n^2}{4} \rceil = \frac{n^2 + 3}{4} \).}
+
+\begin{center}
+
+Let \(n = 2k + 1\) where \(k \in \mathbb{Z}\).
+
+\( \lceil \frac{(2k+1)^2}{4} \rceil = \frac{(2k+1)^2 + 3}{4} \)
+
+\( \lceil \frac{4k^2 + 4k + 1}{4} \rceil = \frac{4k^2 + 4k + 1 + 3}{4} \)
+
+\( \lceil k^2 + k + \frac{1}{4} \rceil = k^2 + k + 1 \)
+
+\(  k^2 + k + \lceil \frac{1}{4} \rceil = k^2 + k + 1 \)
+
+\(  k^2 + k + 1 = k^2 + k + 1 \)
+
+\end{center}
+
+\end{subparts}
+
+\question {Find the following.} (2.4)
+\begin{subparts}
+\subpart {\( \sum_{i=1}^{25} \frac{8}{i(i+3)} \).} 
+
+\begin{center}
+
+\( \frac{8}{i(i+3)} = \frac{A}{i} + \frac{B}{i+3} \)
+
+\( 8 = A(i+3) + B(i) \)
+
+\( 8 = Ai = 3A + Bi \)
+
+\( A = \frac{8}{3}, B = -\frac{8}{3} \)
+
+\( \frac{8}{i(i+3)} = \frac{8}{3i} - \frac{8}{3i+9} \)
+\vspace{5px}
+
+\( \sum_{i=1}^{25} \frac{8}{3i} - \frac{8}{3i+9} \)
+
+\( \frac{8}{3} - \frac{8}{12} + \frac{8}{6} - \frac{8}{15} + \frac{8}{9} - \frac{8}{18} + \frac{8}{12} - \frac{8}{21} + ... + \frac{8}{69} - \frac{8}{78} + \frac{8}{72} - \frac{8}{81} + \frac{8}{75} - \frac{8}{84}\)
+
+\( \frac{8}{3} + \frac{8}{6} + \frac{8}{9} - \frac{8}{78} - \frac{8}{81} - \frac{8}{84}\)
+
+\textcolor{blue}{Notice that this is a telescoping sum.}
+
+\end{center}
+
+\subpart {\( 9 \cdot \sum_{i=0}^{25} \frac{{5^i}}{3^{2-i}} \).} 
+
+\begin{center}
+
+\textcolor{red}{There were errors in this question too, sorry! I completely forgot what a geometric sum was o.o}
+
+\( \sum_{i=0}^{25} 3^2 \cdot \frac{{5^{i}}}{3^{2-i}} \)
+
+\( \sum_{i=0}^{25} 5^{i} \cdot 3^{i} \)
+
+\( \sum_{i=0}^{25} {15}^{i} \)
+
+\( \frac{15^{26}-1}{14} \)
+
+\end{center}
+
+\subpart {\( \sum_{i=1}^{4} \sum_{j=1}^{3} ij \).} 
+
+\begin{center}
+
+\( \sum_{i=1}^{4} i + 2i + 3i \)
+
+\( \sum_{i=1}^{4} 6i \)
+
+\( 6 + 12 + 18 + 24 \)
+
+\( 60 \)
+
+\end{center}
+
+\end{subparts}
+
+\question {Solve the following recurrence relations. (2.4)}
+\begin{subparts}
+\subpart { \(a_n = -a_{n-1} \hspace{55px} a_0 = 5 \) }
+
+\begin{center}
+
+\(a_0 = 5\)
+
+\(a_1 = -5\)
+
+\(a_2 = 5\)
+
+\(a_3 = -5\)
+
+\(a_n = (-1)^n \cdot 5\)
+
+\end{center}
+
+\subpart { \(a_n = a_{n-1} + 3 \hspace{45px} a_0 = 2 \) }
+
+\begin{center}
+
+\(a_0 = 2\)
+
+\(a_1 = 5\)
+
+\(a_2 = 8\)
+
+\(a_3 = 11\)
+
+\(a_n = 2 + 3n\)
+
+\end{center}
+
+\subpart { \(a_n = (n+1)a_{n-1} \hspace{31px} a_0 = 1 \) }
+
+\begin{center}
+
+\(a_0 = 1\)
+
+\(a_1 = 2\)
+
+\(a_2 = 6\)
+
+\(a_3 = 24\)
+
+\(a_n = (n+1)!\)
+
+\end{center}
+
+\subpart { \(a_n = 2na_{n-1} \hspace{51px} a_0 = 7 \) }
+
+\begin{center}
+
+\(a_0 = 7\)
+
+\(a_1 = 2 \cdot 1 \cdot 7 = 14\)
+
+\(a_2 = 2 \cdot 2 \cdot 14 = 56\)
+
+\(a_3 = 2 \cdot 3 \cdot 56 = 336\)
+
+\(a_n = 2^n \cdot n! \cdot 7 \)
+
+\end{center}
+
+\subpart { \(a_n = -a_{n-1} + n - 1 \hspace{19px} a_0 = 8 \) }
+
+
+\begin{center}
+
+\(a_0 = 8\)
+\vspace{5px}
+
+\(a_1 = -(8) + 1 - 1\)
+
+\(a_1 = -8\)
+\vspace{5px}
+
+\(a_2 = -(-(8) + 1 - 1) + 2 - 1 \)
+
+\(a_2 = 8 - 1 + 1 + 2 - 1 \)
+
+\(a_2 = 9\)
+\vspace{5px}
+
+\(a_3 = -(-(-(8) + 1 - 1) + 2 - 1) + 3 - 1 \)
+
+\(a_3 = -8 + 1 - 1 - 2 + 1 + 3 - 1\)
+
+\(a_3 = -7\)
+\vspace{5px}
+
+\(a_4 = -(-(-(-(8) + 1 - 1) + 2 - 1) + 3 - 1) + 4 - 1 \)
+
+\(a_4 = 8 - 1 + 1 + 2 - 1 - 3 + 1 + 4 - 1 \)
+
+\(a_4 = 8 + (-1 + 2 - 3 + 4) + 1 - 1 + 1 - 1 \)
+
+\(a_4 = 10\)
+\vspace{5px}
+
+\(a_n = (-1)^n \cdot 8 + (-1)^n \cdot (\sum^n_{i=1} (-1)^i \cdot i) + (\sum^n_{i=1} (-1)^{i-1}) \)
+
+\vspace{5px}
+\textcolor{blue}{Alternatively, we can define it as a piecewise function.}
+
+\(a_n = 
+	\begin{cases}
+        8+\frac{n}{2} & \text{if } x \text{ is even}\\
+        -8+\frac{n-1}{2} & \text{if } x \text{ is odd}\\
+    \end{cases}
+\)
+
+\end{center}
+
+\end{subparts}
+
+\question {Is the sequence \( \{a_n\}\) a solution of the recurrence relation \(a_n = 8a_{n-1} - 16a_{n-2} \) if: (2.4)}
+\begin{subparts}
+\subpart {\(a_n = 0\).}
+
+\begin{center}
+True
+
+\( a_n = 0, a_{n-1} = 0, a_{n-2} = 0 \)
+
+\( 0 = 8 \cdot 0 - 16 \cdot 0 \)
+
+\( 0 = 0\)
+\end{center}
+
+\subpart {\(a_n = 1\).}
+
+\begin{center}
+False
+
+\( a_n = 1, a_{n-1} = 1, a_{n-2} = 1 \)
+
+\( 1 = 8 \cdot 1 - 16 \cdot 1 \)
+
+\( 1 \neq -8\)
+\end{center}
+
+\subpart {\(a_n = 2^n\).}
+
+\begin{center}
+False
+
+\( a_n = 2^n, a_{n-1} = 2^{n-1}, a_{n-2} = 2^{n-2} \)
+
+\( 2^n = 8 \cdot 2^{n-1} - 16 \cdot 2^{n-2} \)
+
+\( 2^n = 4 \cdot 2^{n} - 4 \cdot 2^{n} \)
+
+\( 2^n \neq 0 \)
+
+\end{center}
+
+\subpart {\(a_n = 4^n\).}
+
+\begin{center}
+True
+
+\( a_n = 4^n, a_{n-1} = 4^{n-1}, a_{n-2} = 4^{n-2} \)
+
+\( 4^n = 8 \cdot 4^{n-1} - 16 \cdot 4^{n-2} \)
+
+\( 4^n = 2 \cdot 4^{n} -  4^{n} \)
+
+\( 4^n = 4^n \)
+
+\end{center}
+
+\subpart {\(a_n = n4^n\).}
+
+\begin{center}
+True
+
+\( a_n = n4^n, a_{n-1} = (n-1)4^{n-1}, a_{n-2} = (n-2)4^{n-2} \)
+
+\( n4^n = 8(n-1) \cdot 4^{n-1} - 16(n-2) \cdot 4^{n-2} \)
+
+\( n4^n = 2(n-1) \cdot 4^{n} - (n-2)4^{n} \)
+
+\( n4^n = (2n-2) \cdot 4^{n} - (n-2)4^n \)
+
+\( n4^n = n4^{n} \)
+
+\end{center}
+
+\subpart {\(a_n = n^24^n\).}
+
+\begin{center}
+False
+
+\( a_n = n^2 4^n, a_{n-1} = (n-1)^2 4^{n-1}, a_{n-2} = (n-2)^2 4^{n-2} \)
+
+\( n^2 4^n = 8(n-1)^2 \cdot 4^{n-1} - 16(n-2)^2 \cdot 4^{n-2} \)
+
+\( n^2 4^n = 2(n^2-2n-1) \cdot 4^{n} - (n^2-4n+4)4^{n} \)
+
+\( n^2 4^n = (2n^2-4n+2) \cdot 4^{n} - (n^2-4n+4)4^n \)
+
+\( n^2 4^n \neq (n^2-2)4^{n} \)
+
+\end{center}
+
+\end{subparts}
+
+\question {Prove or disprove the following.} (2.5)
+\begin{subparts}
+\subpart {The set of positive rational numbers are countable.}
+
+\begin{center}
+
+True.
+
+\textcolor{blue}{Look at Chapter 2.5 Example 4 for the proof.}
+
+\end{center}
+
+\subpart {The set of rational numbers are countable.}
+
+\begin{center}
+
+True.
+
+\textcolor{blue}{Consider the question above. Simply alternate between positive and negative to account for the set of all negative real numbers too. Start with 0 to account for 0.}
+
+\end{center}
+
+\subpart {The set of real numbers are countable.}
+
+\begin{center}
+
+False.
+
+\textcolor{blue}{Look at Chapter 2.5 Example 5 for the proof.}
+
+\end{center}
+
+\subpart { \(\mathbb{Z^+} \times \mathbb{Z^+} \) is countable.}
+
+\begin{center}
+
+True.
+
+\textcolor{blue}{The solution is formatted the same as 24i. Treat the numerator/denominator as a two-tuple.}
+
+\end{center}
+
+\end{subparts}
+
+\question { The cardinality of \( \{\emptyset, \{\emptyset\}, \{\emptyset, \emptyset\}\} \) is 3.} (2.5)
+
+\begin{center}
+
+False.
+
+\( \{\emptyset\} \) and \( \{\emptyset, \emptyset\} \) are identical. Keep in mind that sets with duplicate items are considered to be the same.
+
+If we remove the duplicate items from \( \{\emptyset, \{\emptyset\}, \{\emptyset, \emptyset\}\} \), we get \( \{\emptyset, \{\emptyset\} \}\).
+
+Therefore, the cardinality of \( \{\emptyset, \{\emptyset\}, \{\emptyset, \emptyset\}\} \) is 2.
+
+\end{center}
+
+
+\question { Given the matrix 
+\( A =
+\begin{bmatrix}
+1 & 0 & 1\\
+0 & 1 & 0
+\end{bmatrix}
+\)
+, find \(A^T\) and \(A \odot A^T\). (2.6)
+}
+
+\begin{center}
+
+\( A^T =
+\begin{bmatrix}
+1 & 0\\
+0 & 1\\
+1 & 0
+\end{bmatrix}
+\)
+
+\( A \odot A^T =
+\begin{bmatrix}
+(1 \land 1) \lor (0 \land 0) \lor (1 \land 1) & (1 \land 0) \lor (0 \land 1) \lor (1 \land 0)\\
+(0 \land 1) \lor (1 \land 0) \lor (0 \land 1) & (0 \land 0) \lor (1 \land 1) \lor (0 \land 0)\\
+\end{bmatrix}
+\)
+
+\( A \odot A^T =
+\begin{bmatrix}
+1 & 0\\
+0 & 1\\
+\end{bmatrix}
+\)
+
+\end{center}
+
+
+%----------------------------------------------------------------------------------------
+
+%	CHAPTER 3
+
+%----------------------------------------------------------------------------------------
+
+\vspace{10pt}
+{\Large Chapter 3}
+\vspace{2pt}
+
+\question {Use the Cashier's algorithm to make 64¢ using the least number of coins. (3.1)
+
+\begin{center}
+
+The Cashier's algorithm is a greedy algorithm that creates change by choose the highest possible coin at all times.
+
+For 64¢, this would be two 25¢, one 10¢, and four 1¢ 
+
+\end{center}
+
+- Bonus: Write pseudo-code for the Cashier's algorithm using 25¢, 10¢, 5¢, and 1¢ coins.}
+
+\begin{center}
+
+\begin{verbatim}
+procedure cashier(n):
+    coins = {25: 0, 10: 0, 5: 0, 1: 0}
+    while n > 25:
+        coins[25]++
+        n -= 25
+    while n > 10:
+        coins[10]++
+        n -= 10
+    while n > 5
+        coins[5]++
+        n -= 5
+    coins[1] += n
+    return coins
+\end{verbatim}
+
+\end{center}
+
+\newpage
+
+\question {Find an accurate big-O of the following. Simplify where possible. Provide witnesses. (3.2)}
+\begin{subparts}
+\subpart { \( x^3 + x^2 + x + 5 \). }
+
+\begin{center}
+\( x^3 + x^2 + x + 5 \leq Cg(x) \) for \(x \geq 1\)
+
+\( x^3 + x^3 + x^3 + 5x^3 \leq Cg(x) \) for \(x \geq 1\)
+
+\( 8x^3 \leq Cg(x) \) for \(x \geq 1\)
+
+\( x^3 + x^2 + x + 5 = O(x^3)\) for \(k = 1\), \(C = 8\)
+\end{center}
+
+\subpart { \( x^2\log(2) + x\log^2(2) \). }
+
+\begin{center}
+\( x^2\log(2) + x\log^2(2) \leq Cg(x) \) for \(x \geq 1\)
+
+\( x^2\log(2) + x^2\log^2(2) \leq Cg(x) \) for \(x \geq 1\)
+
+\( (\log(2) + \log^2(2))x^2 \leq Cg(x) \) for \(x \geq 1\)
+
+\( x^2\log(2) + x\log^2(2) = O(x^2)\) for \(k = 1\), \(C = \log(2) + \log^2(2)\)
+\end{center}
+
+\subpart { \( (x + e^x)(\ln(e^{5x})) + 999x \). }
+
+\begin{center}
+\( (x + e^x)(\ln(e^{5x})) + 999x \leq Cg(x) \) for \(x \geq 1\)
+
+\( (x + e^x)(5x) + 999x \leq Cg(x) \) for \(x \geq 1\)
+
+\( 5xe^x + 5x^2 + 999x \leq Cg(x) \) for \(x \geq 1\)
+
+\( 5xe^x + 5x^2 + 999x^2 \leq Cg(x) \) for \(x \geq 1\)
+\vspace{5px}
+
+\textcolor{blue}{Note that \(e^x \geq x\) for \(x \geq 1\)}
+\vspace{5px}
+
+\( 5xe^x + 5xe^x + 999xe^x \leq Cg(x) \) for \(x \geq 1\)
+
+\( 1009xe^x \leq Cg(x) \) for \(x \geq 1\)
+
+\( (x + e^x)(\ln(e^{5x})) + 999x = O(xe^x)\) for \(k = 1\), \(C = 1009\)
+\end{center}
+
+\subpart { \( \log(n!) \). }
+
+\begin{center}
+
+\(\log(n!) \leq Cg(x)\) for \(x \geq 1\)
+\vspace{5px}
+
+\textcolor{blue}{Note that \(n^n \geq n!\) for \(x \geq 1\)}
+\vspace{5px}
+
+\(\log(n^n) \leq Cg(x)\) for \(x \geq 1\)
+
+\(n\log(n) \leq Cg(x)\) for \(x \geq 1\)
+
+\(\log(n!) = O(n\log(n))\) for \(k = 1\), \(C = 1\)
+
+\end{center}
+
+\newpage
+
+\subpart { \( \lceil x + 2 \rceil \cdot \lfloor \frac{x}{3} + \log^{20}(x) \rfloor \). }
+
+\begin{center}
+\textcolor{blue}{Note that \( x+2 \geq \lceil x \rceil\) for \(x \geq 1\)}
+
+\textcolor{blue}{Note that \( x+2 \geq \lfloor x \rfloor\) for \(x \geq 1\)}
+\vspace{5px}
+
+\( \lceil x + 2 \rceil \cdot \lfloor \frac{x}{3} + \log^{20}(x) \rfloor \leq Cg(x)\) for \(x \geq 1\)
+
+\( (x + 4) \cdot (\frac{x}{3} + \log^{20}(x) + 4) \leq Cg(x)\) for \(x \geq 1\)
+
+\vspace{5px}
+\textcolor{blue}{Suppose that \(f_1(x) = O(g_1(x))\) and \(f_2(x) = O(g_2(x))\).}
+
+\textcolor{blue}{Then \((f_1 + f_2)(x) = O(g(x))\), where \(g(x) = \text{max}(|g_1(x)|, |g_2(x)|)\).}
+\vspace{5px}
+
+We will prove that \(O(x) \geq O(\log^{20}(x))\)
+
+Suppose \(x\) is \(O(\log^{20}(x))\)
+
+\(x \leq C\log^{20}(x)\)
+
+\(\sqrt[20]{x} \leq C\log{x}\)
+
+\(10^{\sqrt[20]{x}} \leq Cx\)
+
+This is impossible. An exponential function will always grow faster than a polynomial for big x.
+
+Therefore, \(O(x) \geq O(\log^{20}(x))\) for \(k = 3 \cdot 10^{30}, C = 1\)
+
+\( (x + 4) \cdot (\frac{x}{3} + x + x) \leq Cg(x)\) for \(x \geq 3 \cdot 10^{30}\)
+
+\( \frac{7x^2}{3} + \frac{28x}{3} \leq Cg(x)\) for \(x \geq 3 \cdot 10^{30}\)
+
+\( \frac{7x^2}{3} + \frac{28x^2}{3} \leq Cg(x)\) for \(x \geq 3 \cdot 10^{30}\)
+
+\( \frac{35x^2}{3} \leq Cg(x)\) for \(x \geq 3 \cdot 10^{30}\)
+
+\( \lceil x + 2 \rceil \cdot \lfloor \frac{x}{3} + \log^{20}(x) \rfloor = O(x^2)\) for \(k = 3\cdot10^{30}\), \(C = \frac{35}{3}\)
+
+\textcolor{red}{There is probably a better way to go about this proof. If the exam is reasonable, we will not encounter high powers of log/ln.}
+
+\end{center}
+
+\subpart { \( \frac{x^7 + x^5}{x^4 + x^3 + 2x^2} \). }
+
+\begin{center}
+
+\( \frac{x^7 + x^5}{x^4 + x^3 + 2x^2} \leq Cg(x)\) for \(x \geq 1\)
+
+\( \frac{x^7 + x^7}{x^4} \leq Cg(x)\) for \(x \geq 1\)
+
+\( \frac{2x^7}{x^4} \leq Cg(x)\) for \(x \geq 1\)
+
+\( 2x^3 \leq Cg(x)\) for \(x \geq 1\)
+
+\( \frac{x^7 + x^5}{x^4 + x^3 + 2x^2} = O(x^3)\) for \(k = 1, C = 2\)
+
+\end{center}
+
+\subpart { \( \frac{x^4 + x^3 + 2x^2}{x^7 + x^5} \). }
+
+\begin{center}
+
+\( \frac{x^4 + x^3 + 2x^2}{x^7 + x^5} \leq Cg(x)\) for \(x \geq 1\)
+
+\( \frac{x^4 + x^4 + 2x^4}{x^7} \leq Cg(x)\) for \(x \geq 1\)
+
+\( \frac{4x^4}{x^7} \leq Cg(x)\) for \(x \geq 1\)
+
+\( \frac{4}{x^3} \leq Cg(x)\) for \(x \geq 1\)
+
+\( \frac{x^7 + x^5}{x^4 + x^3 + 2x^2} = O(1/x^3)\) for \(k = 1, C = 4\)
+
+\end{center}
+
+\end{subparts}
+
+\question {Prove or disprove that \( \frac{x^4 + x^3 + 2x^2}{x^7 + x^5} = O(1)\).} (3.2)
+
+\begin{center}
+
+As previously established, the function is \(O(\frac{1}{x^3})\).
+
+Trivially, \(1 \geq \frac{1}{x^3}\) for all \(x \geq 1\).
+
+Therefore, the function is also \(O(1)\) for \(k = 1, C = 1\).
+
+\end{center}
+
+\newpage
+
+\question {Suppose \( f(x) = O(g(x)) \). Show that \( g(x) = \Omega(f(x)) \).} (3.2)
+
+\begin{center}
+
+\( f(x) \leq Cg(x) \)
+
+\( (\frac{1}{C})f(x) \leq g(x) \)
+
+Let \(\frac{1}{C} = C'\)
+
+\( C'f(x) \leq g(x) \)
+
+By the definition of \(\Omega\), \(g(x) = \Omega(f(x))\).
+
+\end{center}
+
+\question {Prove that \( n! \) is not \( O(2^n) \).} (3.2)
+
+\begin{center}
+
+If \(n! \neq O(2^n)\), then \(n! > C2^n\)
+
+\( n! > C2^n \)
+
+\( \frac{n!}{2^n} > C \)
+
+\( \frac{1 \cdot 2 \cdot 3 \cdot ... \cdot n}{2 \cdot 2 \cdot 2 \cdot ... \cdot 2} > C\)
+
+\( \frac{1}{2} \cdot \frac{2}{2} \cdot \frac{3}{2} \cdot ... \cdot \frac{n}{2} > C\)
+
+\textcolor{blue}{Notice that \(\frac{n}{2} \geq 1\) for \(n \geq 2\)}
+
+\( \frac{1}{2} \cdot 1 \cdot 1 \cdot ... \cdot \frac{n}{2} > C\)
+
+\( \frac{n}{4} > C\)
+
+Since there always exists an \(n\) such that \(\frac{n}{4} > C\), \(n!\) cannot be \(O(2^n)\).
+
+\end{center}
+
+\question {Prove that \( 1^k + 2^k + ... + n^k = O(n^{k+1}) \) for all \(k \in \mathbb{Z^+} \). (3.2)}
+
+\begin{center}
+
+\( 1^k + 2^k + ... + n^k \leq Cn^{k+1} \)
+
+\textcolor{blue}{Note that \(n^k \geq a^k\) for all \(a \leq n\).}
+
+\( n^k + n^k + ... + n^k \leq Cn^{k+1} \)
+
+\( n \cdot n^k \leq Cn^{k+1} \)
+
+\( n^{k+1} \leq Cn^{k+1} \)
+
+ \( 1^k + 2^k + ... + n^k = O(n^{k+1}) \) for \(k = 1, C = 1\).
+
+\end{center}
+
+%----------------------------------------------------------------------------------------
+
+%	CHAPTER 4
+
+%----------------------------------------------------------------------------------------
+
+\vspace{10pt}
+{\Large Chapter 4}
+\vspace{2pt}
+
+\question {Prove or disprove the following. (4.1) }
+\begin{subparts}
+\subpart { \( (a+b) \Mod{m} = (a \Mod{m} + b \Mod{m} ) \Mod{m} \). }
+
+\begin{center}
+
+\textcolor{blue}{Note that \(A \equiv (A \Mod{m}) \Mod{m} \)}
+
+\textcolor{blue}{If \(a \equiv b \Mod{m}  \) and \(c \equiv d \Mod{m} \), then \(a+c \equiv (b+d \Mod{m}) \Mod{m} \)}
+
+By the definition of mod, \(a \equiv (a \Mod{m})\Mod{m} \) and  \(b \equiv (b \Mod{m})\Mod{m} \)
+
+Therefore, \( (a+b) \equiv ((a \Mod{m} + b \Mod{m})\Mod{m})\Mod{m} \)
+
+And thus \( (a+b)\Mod{m} = (a \Mod{m} + b \Mod{m})\Mod{m} \)
+
+\textcolor{blue}{See Chapter 4.1, Proof of Corollary 2 if there's confusion.}
+
+\end{center}
+
+\subpart { \( (ab) \Mod{m} = ( (a \Mod{m})(b \Mod{m}) ) \).}
+
+\begin{center}
+See question above. 
+
+\textcolor{blue}{See Chapter 4.1, Proof of Corollary 2 if there's confusion.}
+\end{center}
+
+\newpage
+
+\subpart { If \(a \equiv b \Mod{m} \), then \( 2a \equiv 2b \Mod{m} \). }
+
+\begin{center}
+
+\(a = b + mk\)
+
+\(2a = 2b + 2mk\)
+
+\(2a = 2b + m(2k)\)
+
+\(2a \equiv 2b \Mod{m}\)
+
+\end{center}
+
+\subpart { If \(a \equiv b \Mod{m} \), then \( 2a \equiv 2b \Mod{2m} \). }
+
+\begin{center}
+
+\(a = b + mk\)
+
+\(2a = 2b + 2mk\)
+
+\(2a = 2b + 2m(k)\)
+
+\(2a \equiv 2b \Mod{2m}\)
+
+\end{center}
+
+\subpart { If \(a \equiv b \Mod{m} \), then \( a \equiv b \Mod{2m} \). }
+
+\begin{center}
+
+False.
+
+Counterexample: \(a = 1, b = 3, m = 2\).
+
+\end{center}
+
+\subpart { If \(a \equiv b \Mod{2m} \), then \( a \equiv b \Mod{m} \). }
+
+\begin{center}
+
+\(a = b + 2mk\)
+
+\(a = b + m(2k)\)
+
+\(a \equiv b \Mod{m}\)
+
+\end{center}
+
+\subpart { If \(a|bc\), then \(a|b\) and \(a|c\). }
+
+\begin{center}
+False.
+
+Counterexample: \(a=2, b=2, c=3\)
+\end{center}
+
+\subpart { If \(a|b\) and \(b|c\), then \(a|c\). }
+
+\begin{center}
+
+\(a|b\) means that \(b = am\)
+
+\(b|c\) means that \(c = bn\)
+
+Therefore, \(c = amn\)
+
+\(c = a(mn)\)
+
+\(a|c\)
+
+\end{center}
+
+\subpart { \( a \Mod{d} = a - d \lfloor \frac{a}{d} \rfloor \) }
+
+\begin{center}
+
+Suppose we have \( \frac{a}{d} \).
+
+This can be represented by \( a = dq + r \), where \(q \in \mathbb{Z}\) and \(r \in [0, d)\)
+
+\( r = a \Mod d \)
+
+\( q = a \Div d = \lfloor \frac{a}{d} \rfloor \)
+
+We can rewrite the original equation as \(r = a - dq\)
+
+This is true by the Division Algorithm.
+
+\end{center}
+
+\end{subparts}
+
+\question {Find the following. (4.1) }
+\begin{subparts}
+\subpart { \( (15^8 \Mod{24})^5 \Mod{16} \). }
+
+\begin{center}
+\(15 \Mod{24} = 15\)
+
+\(15^2 \Mod{24} = 9\)
+
+\(15^4 \Mod{24} = 9\)
+
+\(15^8 \Mod{24} = 9\)
+
+\(9 \Mod{16} = 9\)
+
+\(9^2 \Mod{16} = 1\)
+
+\(9^4 \Mod{16} = 1\)
+
+\(9^5 \Mod {16} = 9\)
+
+\end{center}
+
+\newpage
+
+\subpart { \( ((15^8 \Mod{225})^5 \Mod{999})^{32} \) }
+
+\begin{center}
+\(15 \Mod{225} = 15\)
+
+\(15^2 \Mod{225} = 0\)
+
+\(15^4 \Mod{225} = 0\)
+
+\(15^8 \Mod{225} = 0\)
+
+\(0 \Mod{999} = 0\)
+
+\(0^2 \Mod{999} = 0\)
+
+\(0^4 \Mod{999} = 0\)
+
+\(0^5 \Mod{999} = 0\)
+
+\(0^{32} = 0\)
+
+\end{center}
+
+\subpart { \( (50 +_{21} 75) \cdot_{21} 32 \). }
+
+\begin{center}
+
+\( (50 +_{21} 75) = 125 \Mod{21} = 20\)
+
+\( (20 \cdot_{21} 32) = 640 \Mod{21} = 10\)
+
+\end{center}
+
+\end{subparts}
+
+\question {Convert the following numbers. (4.2) }
+\begin{subparts}
+\subpart { Convert \( 156_{10} \) to binary. }
+
+\begin{center} \(1001 1100_2\) \end{center}
+
+\subpart { Convert \( 1010101101001_{2} \) to hexadecimal. }
+
+\begin{center} \(1569_{16}\) \end{center}
+
+\subpart { Convert \( 101111011000_{2} \) to octal. }
+
+\begin{center} \(5630_{8}\) \end{center}
+
+\subpart { Convert \( 156_{8} \) to binary. }
+
+\begin{center} \(110 1110_{2}\) \end{center}
+
+\subpart { Convert \( A4E_{16} \) to binary. }
+
+\begin{center} \(1010 0100 1110_{2}\) \end{center}
+
+\subpart { Convert \( A4E_{16} \) to decimal. }
+
+\begin{center} \(2638_{10}\) \end{center}
+
+\subpart { Convert \( 10101110100_{2} \) to decimal. }
+
+\begin{center} \(1396_{10}\) \end{center}
+
+\subpart { Convert \( 15623_{8} \) to decimal. }
+
+\begin{center} \(7059_{10}\) \end{center}
+
+\end{subparts}
+
+\question {Find the sum or product of the following. (4.2) }
+\begin{subparts}
+\subpart { \( 10101110100_{2} + 101001_{2} \). }
+
+\begin{center} \(10110011101_{2}\) \end{center}
+
+\subpart { \( 10101_{2} \cdot 101101_{2} \). }
+
+\begin{center} \(1110110001_{2}\) \end{center}
+
+\subpart { \( 55123_{8} + 7743147_{8} \). }
+
+\begin{center} \(10020272_{8}\) \end{center}
+
+\subpart { \( 462_{8} \cdot 732_{8} \). }
+
+\begin{center} \(1414_{8}\) \end{center}
+
+\subpart { \( D5E_{16} + B332_{16} \). }
+
+\begin{center} \(C090_{16}\) \end{center}
+
+\subpart { \( 2D_{16} \cdot 3D_{16} \). }
+
+\begin{center} \(AB9_{16}\) \end{center}
+
+\end{subparts}
+
+\question { Given a decimal number \( n \), how many bits are needed to represent it in base 2? } (4.2)
+
+\begin{center}
+Suppose the final binary number had \(d\) digits.
+
+The maximum possible value of that binary number would be \(2^d - 1\).
+
+Therefore, given a decimal number \(n\), we would need the smallest number \(d\) such that \(n \leq 2^d - 1\).
+
+\(n \leq 2^d - 1\)
+
+\(n + 1 \leq 2^d\)
+
+\(\log_2(n+1) \leq d\)
+
+\(d = \lceil \log_2(n+1) \rceil\)
+
+\end{center}
+
+
+\question { Given a binary number \( n \), how many digits are needed to represent it in base 10? } (4.2)
+
+\begin{center}
+Suppose the final decimal number had \(d\) digits.
+
+The maximum possible value of that decimal number would be \(10^d - 1\).
+
+Therefore, given a binary number \(n\), we would need the smallest number \(d\) such that \(n \leq 10^d - 1\).
+
+\(n \leq 10^d - 1\)
+
+\(n + 1 \leq 10^d\)
+
+\(\log_{10}(n+1) \leq d\)
+
+\(d = \lceil \log_{10}(n+1) \rceil\)
+
+\end{center}
+
+\question { Find the prime factorization of the following numbers. (4.3) }
+\begin{subparts}
+\subpart { \( 7007\). }
+
+\begin{center} \( 7^2 \cdot 11 \cdot 13 \) \end{center}
+
+\subpart { \( 123\). }
+
+\begin{center} \( 3 \cdot 41 \) \end{center}
+
+\subpart { \( 166320\). }
+
+\begin{center} \( 2^4 \cdot 3^3 \cdot 5 \cdot 7 \cdot 11 \) \end{center}
+
+\subpart { \( 21\). }
+
+\begin{center} \(3 \cdot 7 \) \end{center}
+
+\end{subparts}
+
+\question { Find the gcd and lcm of the following numbers. (4.3) }
+\begin{subparts}
+\subpart { 1 and 166320. }
+
+\begin{center}
+gcd: \( 1 \)
+, lcm: \( 2^4 \cdot 3^3 \cdot 5 \cdot 7 \cdot 11 \)
+\end{center}
+
+\subpart { 21 and 166320. }
+
+\begin{center}
+gcd: \( 3 \cdot 7 \)
+, lcm: \( 2^4 \cdot 3^3 \cdot 5 \cdot 7 \cdot 11 \)
+\end{center}
+
+\subpart { 123 and 166320. }
+
+\begin{center}
+gcd: \( 3 \)
+, lcm: \( 2^4 \cdot 3^3 \cdot 5 \cdot 7 \cdot 11 \cdot 41 \)
+\end{center}
+
+\subpart { 7007 and 166320. }
+
+\begin{center}
+gcd: \( 7 \cdot 11 \)
+, lcm: \( 2^4 \cdot 3^3 \cdot 5 \cdot 7^2 \cdot 11 \cdot 13 \)
+\end{center}
+
+\subpart { 166320 and 166320. }
+
+\begin{center}
+gcd: \( 2^4 \cdot 3^3 \cdot 5 \cdot 7 \cdot 11 \)
+, lcm: \( 2^4 \cdot 3^3 \cdot 5 \cdot 7 \cdot 11 \)
+\end{center}
+
+\subpart { \(12!\) and \(15!\). }
+
+\begin{center}
+gcd: \( 12! \)
+, lcm: \( 15! \)
+\end{center}
+
+\end{subparts}
+
+\newpage
+
+\question { Given that \(a = 215\), \(\gcd(a,b) = 5\), and \(\lcm(a,b) = 4180890\), find b.} (4.3)
+
+\begin{center}
+
+\(ab = \gcd(a,b) \cdot \lcm(a,b)\)
+
+\(b = \frac{\gcd(a,b) \cdot \lcm(a,b)}{a}\)
+
+\(b = \frac{5 \cdot 4180890}{215}\)
+
+\(b = 97230\)
+
+\end{center}
+
+
+%----------------------------------------------------------------------------------------
+
+%	CHAPTER 5
+
+%----------------------------------------------------------------------------------------
+
+\vspace{10pt}
+{\Large Chapter 5}
+\vspace{2pt}
+
+\question{ Prove that \( 3 | n^3 + 3n^2 + 2n \) for all integers \( n \geq 1 \). } (5.1)
+
+\begin{center}
+
+Base Case (\(n = 1\))
+
+\(3|n^3 + 3n^2 + 2n\)
+
+\(3|1 + 3 + 2\)
+
+\(3|6\)
+\vspace{5px}
+
+Inductive Step
+
+Assume \(3 | n^3 + 3n^2 + 2n\). 
+
+Prove \(3 | (n+1)^3 + 3(n+1)^2 + 2(n+1)\)
+
+\(3 | n^3 + 3n^2 + 3n + 1 + 3n^2 + 6n + 3 + 2n + 2\)
+
+\(3 | n^3 + 6n^2 + 11n + 6\)
+
+\(3 | n^3 + 3n^2 + 2n + (3n^2 + 9n + 6)\)
+
+Since \(3 | n^3 + 3n^2 + 2n\), then \(n^3 + 3n^2 + 2n = 3k\) for some \(k \in \mathbb{Z}\).
+
+\(3 | 3k + 3(n^2 + 3n + 2)\)
+
+\(3 | 3(k+n^2+3n+2)\)
+
+Since 3 is a factor, then \(3 | n^3 + 3n^2 + 2n\) for all \( n \geq 1 \).
+
+\end{center}
+
+\question{ Prove the following summation rules. (5.1) }
+\begin{subparts}
+\subpart {\( \sum_{i=1}^{n} i = \frac{n(n+1)}{2} \) for all integers \( n \geq 1 \). }
+
+\begin{center}
+
+Base Case (\(n = 1\))
+
+\(\sum_{i=1}^{1} i = 1\)
+
+\(\frac{1(1+1)}{2} = 1\)
+\vspace{5px}
+
+Inductive Step
+
+Assume \( \sum_{i=1}^{n} i = \frac{n(n+1)}{2} \). 
+
+Prove \( \sum_{i=1}^{n+1} i = \frac{(n+1)(n+2)}{2} \).
+
+\( (n+1) + \sum_{i=1}^{n} i \)
+
+\( (n+1) + \frac{n(n+1)}{2} \)
+
+\(  \frac{n(n+1) + 2(n+1)}{2} \)
+
+\(  \frac{n^2 + n + 2n + 2}{2} \)
+
+\(  \frac{n^2 + 3n + 2}{2} \)
+
+\(  \frac{(n+1)(n+2)}{2} \)
+
+\end{center}
+
+\newpage
+
+\subpart {\( \sum_{i=1}^{n} i^2 = \frac{n(n+1)(2n+1)}{6} \) for all integers \( n \geq 1 \). }
+
+\begin{center}
+
+Base Case (\(n = 1\))
+
+\(\sum_{i=1}^{1} i^2 = 1\)
+
+\(\frac{1(2)(3)}{6} = 1\)
+\vspace{5px}
+
+Inductive Step
+
+Assume \( \sum_{i=1}^{n} i^2 = \frac{n(n+1)(2n+1)}{6} \). 
+
+Prove \(  \sum_{i=1}^{n+1} i^2 = \frac{(n+1)(n+2)(2n+3)}{6} \).
+
+\( (n+1)^2 + \sum_{i=1}^{n} i^2 \)
+
+\( (n+1)^2 + \frac{n(n+1)(2n+1)}{6} \)
+
+\(  \frac{n(n+1)(2n+1) + 6(n+1)^2}{6} \)
+
+\(  \frac{2n^3 + n^2 + 2n^2 + n + 6n^2 + 12n + 6}{6} \)
+
+\(  \frac{2n^3 + 9n^2 + 13n + 6}{6} \)
+
+\(  \frac{(x+1)(2x+3)(x+2)}{6} \)
+
+\end{center}
+
+\subpart {\( \sum_{i=1}^{n} i^3 = \frac{n^2(n+1)^2}{4} \) for all integers \( n \geq 1 \). }
+
+\begin{center}
+
+Base Case (\(n = 1\))
+
+\(\sum_{i=1}^{1} i^3 = 1\)
+
+\(\frac{1^2(2^2)}{4} = 1\)
+\vspace{5px}
+
+Inductive Step
+
+Assume \( \sum_{i=1}^{n} i^3 = \frac{n^2(n+1)^2}{4} \). 
+
+Prove \(  \sum_{i=1}^{n+1} i^3 = \frac{(n+1)^2(n+2)^2}{4} \).
+
+\( (n+1)^3 + \sum_{i=1}^{n} i^3 \)
+
+\( (n+1)^3 + \frac{n^2(n+1)^2}{4} \)
+
+\(  \frac{n^2(n^2+2n+1) + 4(n+1)^3}{4} \)
+
+\(  \frac{n^4+2n^3+n^2+4n^3+12n^2+12n+4}{6} \)
+
+\(  \frac{n^4+6n^3+13n^2+12n+4}{6} \)
+
+\(  \frac{(x+1)^2(x+2)^2}{4} \)
+
+\end{center}
+
+
+\subpart {\( \sum_{i=0}^{n} ar^i = \frac{ar^{n+1} - a}{r-1} \) for all integers \( n \geq 0 \) when \(r \neq 1 \). }
+
+\begin{center}
+
+\textcolor{red}{Another typo. Summation should have started at 0, with base case of 0.}
+
+Base Case (\(n = 0\))
+
+\(\sum_{i=0}^{0} ar^i = a\)
+
+\(\frac{ar - a}{r-1}\)
+
+\(a\frac{r-1}{r-1}\)
+
+\(a\)
+\vspace{5px}
+
+Inductive Step
+
+Assume \( \sum_{i=0}^{n} ar^i = \frac{ar^{n+1} - a}{r-1} \). 
+
+Prove \( \sum_{i=0}^{n+1} ar^i = \frac{ar^{n+2} - a}{r-1} \).
+
+\( ar^{n+1} + \frac{ar^{n+1} - a}{r-1} \)
+
+\( \frac{ar^{n+1} - a + ar^{n+1}(r-1) }{r-1} \)
+
+\( \frac{ar^{n+1} - a + ar^{n+2} -  ar^{n+1}) }{r-1} \)
+
+\( \frac{ar^{n+2} - a }{r-1} \)
+
+
+\end{center}
+
+\end{subparts}
+
+\question{ Prove that \( n < 2^n \) for all integers \( n \geq 1\). } (5.1)
+
+\begin{center}
+Base Case (\(n = 1\))
+
+\( 1 < 2^1 \)
+
+\vspace{5px}
+
+Inductive Step
+
+Assume \( n < 2^n \). 
+
+Prove \( n+1 < 2^{n+1} \).
+
+\( n+1 < 2 \cdot 2^n \) 
+
+\textcolor{blue}{Replace \(2^n\) with a strictly smaller value, and show LS is \(\leq\) RS.}
+
+\( n+1 \leq 2n \) 
+
+\textcolor{blue}{Replace \(1\) with a bigger function, and show LS is \(\leq\) RS.}
+
+\( 2n \leq 2n \)
+
+\end{center}
+
+\question{ Prove that every integer \( n \geq 2 \) is a product of primes. } (5.2)
+
+\begin{center}
+Base Case (\(n = 2\))
+
+2 is a prime number, thus is its own product of primes.
+
+\vspace{5px}
+
+Inductive Step
+
+Assume every integer \( n \leq k \) is a product of primes. 
+
+Prove (k+1) is a product of primes.
+
+Case 1: k+1 is prime
+
+Since k+1 is prime, it is already a product of primes.
+\vspace{5px}
+
+Case 2: k+1 is composite
+
+Since k+1 is composite, it can be written as a factor of two smaller integers \(a\) and \(b\).
+
+Since \(a\) and \(b\) are smaller than \(k+1\), \(a\) and \(b\) must be products of primes.
+
+Therefore, \(k+1\) must also be a product of primes.
+
+\end{center}
+
+\newpage
+
+\question{ Prove that \( \sum_{i=1}^{n} i = \frac{n(n+1)}{2} \) for all integers \( n \geq 1 \) using the well-ordering principle. } (5.2)
+
+\begin{center}
+
+Let \(P(n)\) denote the statement \( \sum_{i=1}^{n} i = \frac{n(n+1)}{2} \).
+
+Suppose \(C = \{n \in \mathbb{Z+} | P(n) = F\}\)
+
+Assume \(C\) is non-empty.
+
+By the well-ordering principle, \(C\) must have a least element \(c^*\).
+
+Since \(c^*\) is the smallest integer such that \(P(n)\) is false, that means for all \(n < c^*, P(n) = T\).
+
+Since \(P(1)\) is T, \(c^* > 1\), meaning that \(c^*-1\) is a non-negative integer and \(P(c^*-1) = T\).
+
+\( \sum_{i=1}^{c^*-1} i = \frac{(c^*-1)(c^*)}{2} \)
+
+Adding \(c*\) to both sides would result in the following.
+
+\( \sum_{i=1}^{c^*} i = \frac{(c^*-1)(c^*)}{2} + c^* \)
+
+\( \sum_{i=1}^{c^*} i = \frac{c^*2 - c^* + 2c^*}{2} \)
+
+\( \sum_{i=1}^{c^*} i = \frac{c^*2 + c^*}{2} \)
+
+\( \sum_{i=1}^{c^*} i = \frac{c^*(c^* + 1)}{2} \)
+
+This shows that \(P(c^*) = T\)... which contradicts our earlier statement that it must be F.
+
+Therefore, there exists no lowest element \(c^*\), meaning \(C\) is empty.
+
+Thus, this proves that \( \sum_{i=1}^{n} i = \frac{n(n+1)}{2} \) for all integers \( n \geq 1 \).
+
+\end{center}
+
+\question{ Prove that every amount 18 cents or more can be formed using just 4-cent and 5-cent stamps. } (5.2)
+
+\begin{center}
+Base Case (\(n = 18\))
+
+\( 2 \cdot 5 + 2 \cdot 4 = 18 \)
+
+\vspace{5px}
+
+Inductive Step
+
+Assume \( P(n) = T \).
+
+Prove \( P(n+1) = T \).
+
+Case 1: \(P(n)\) has a 4-cent coin.
+
+Replace the 4-cent coin with a 5-cent coin to get \(n+1\) coins.
+\vspace{5px}
+
+Case 2: \(P(n)\) consists of only 5-cent coins.
+
+Replace three 5-cent coins with four 4-cent coins to get \(n+1\) coins.
+
+\textcolor{blue}{This is solvable using strong induction too. See Chapter 5.2 Example 4.}
+
+\end{center}
+
+\newpage
+
+\question{ Suppose \(g_n\) is a recursively defined sequence. \(g_1 = 1\), \(g_2 = 2\), \(g_3 = 6\), and \(g_n = (n^3 - 3n^2 + 2n) \cdot g_{n-3} \) for all \( n \geq 4 \). Prove that \(g_n = n!\) for all integers \(n >= 1\). } (5.2)
+
+\begin{center}
+Base Case (\(n = 1, 2, 3\))
+
+\(1 = 1!\)
+
+\(2 = 2!\)
+
+\(6 = 3!\)
+\vspace{5px}
+
+Inductive Step
+
+Assume \( g_j = j! \) for \(1 \leq j \leq k\).
+
+Prove \( g_{k+1} = (k+1)! \).
+
+\(g_{k+1}\)
+
+\(((k+1)^3 - 3(k+1)^2 + 2(k+1)) \cdot g_{k-2} \)
+
+\((k^3 + 3k^2 + 3k + 1 - 3k^2 - 6k - 3 + 2k + 2) \cdot (k-2)! \)
+
+\((k^3 - 1k) \cdot (k-2)! \)
+
+\( (k-1)(k)(k+1) \cdot (k-2)! \)
+
+\( (k+1)! \)
+
+\end{center}
+
+\question { Let \(f_n\) be the \(n\)-th Fibonacci number, and 
+\( A =
+\begin{bmatrix}
+1 & 1\\
+1 & 0
+\end{bmatrix}
+\). Show that 
+\( A^n =
+\begin{bmatrix}
+f_{n+1} & f_{n}\\
+f_{n} & f_{n-1}
+\end{bmatrix}
+\) for \(n \geq 1\). We'll define \(f_0 = 0\), \(f_1 = 1\), \(f_2 = 1\). (5.2) }
+
+\begin{center}
+Base Case (\(n = 1\))
+
+\( A =
+\begin{bmatrix}
+1 & 1\\
+1 & 0
+\end{bmatrix}
+\)
+
+\vspace{5px}
+
+Inductive Step
+
+Assume 
+\( A^n =
+\begin{bmatrix}
+f_{n+1} & f_{n}\\
+f_{n} & f_{n-1}
+\end{bmatrix}
+\) for \(n \geq 1\)
+
+Prove 
+\( A^{n+1} =
+\begin{bmatrix}
+f_{n+2} & f_{n+1}\\
+f_{n+1} & f_{n}
+\end{bmatrix}
+\)
+
+\(A^{n} A\)
+
+\(
+\begin{bmatrix}
+f_{n+1} & f_{n}\\
+f_{n} & f_{n-1}
+\end{bmatrix}
+\begin{bmatrix}
+1 & 1\\
+1 & 0
+\end{bmatrix}
+\)
+
+\(
+\begin{bmatrix}
+f_{n+1} + f_{n} & f_{n+1}\\
+f_{n} + f_{n-1} & f_{n}
+\end{bmatrix}
+\)
+
+\(
+\begin{bmatrix}
+f_{n+2} & f_{n+1}\\
+f_{n+1} & f_{n}
+\end{bmatrix}
+\)
+
+\end{center}
+
+\newpage
+
+%----------------------------------------------------------------------------------------
+
+%	CHAPTER 6
+
+%----------------------------------------------------------------------------------------
+
+\vspace{10pt}
+{\Large Chapter 6}
+\vspace{2pt}
+
+\question {How many password possibilities of length 8 exist given the following restrictions? (6.1)}
+\begin{subparts}
+\subpart { Upper-case and lower-case letters are allowed. }
+
+\begin{center}
+
+\( 52^8 \)
+
+\end{center}
+
+\subpart { Upper-case letters, lower-case letters, and numbers are allowed. }
+
+\begin{center}
+
+\( 61^8 \)
+
+\end{center}
+
+\subpart { Upper-case letters, lower-case letters, and numbers are allowed. Password must contain one number, one capital, and one lower-case letter. }
+
+\begin{center}
+
+\textcolor{red}{This one is tricky! This requires knowledge of 6.5, which is not expected on the exam. If you're still interested, read on.}
+
+If you just do \( 26 \cdot 26 \cdot 10 \cdot 61^5 \), you are assuming that the restrictions apply on the first 3 characters... but you have to consider ordering as well!
+
+There are \({8 \choose 1} \cdot {7 \choose 1} \cdot {6 \choose 6}\) unique ways of arranging the restrictions. 
+
+Each arrangement has \(26 \cdot 26 \cdot 10 \cdot 61^5\) possible character choices.
+
+Therefore, there are \(8 \cdot 7 \cdot 6 \cdot 26^2 \cdot 10 \cdot 61^5\) possible passwords.
+
+\textcolor{blue}{If this doesn't make sense, read Chapter 6.5 Example 7.}
+\textcolor{red}{Again, this is not exam material.}
+
+\end{center}
+
+\subpart { Upper-case letters, lower-case letters, and numbers are allowed. First 2 characters of the password are the first 2 characters of your name. }
+
+\begin{center}
+
+\( 1 \cdot 1 \cdot 61^6 \)
+
+\end{center}
+
+\end{subparts}
+
+\question {How many strings (consisting of 5 unique lower-case letters) contain the letters "a" and "b", such that the letter "a" is always to the left of the letter "b"?} (6.1)
+
+\begin{center}
+
+Case 1: x b \_ \_ \_
+
+Case 2: x x b \_ \_
+
+Case 3: x x x b \_
+
+Case 4: x x x x b
+
+The x represents where an a can be present. One of them must have an a.
+
+Case 1 has \(1 \cdot 1 \cdot 24 \cdot 23 \cdot 22\) possibilities.
+
+Case 2 has \((1 \cdot 24 \cdot 1 \cdot 23 \cdot 22) + (24 \cdot 1 \cdot 1 \cdot 23 \cdot 22)\) possibilities.
+
+Case 3 has \((1 \cdot 24 \cdot 23 \cdot 1 \cdot 22) + (24 \cdot 1 \cdot 23 \cdot 1 \cdot 22) + (24 \cdot 23 \cdot 1 \cdot 1 \cdot 22)\) possibilities. 
+
+Case 4 has \((1 \cdot 24 \cdot 23 \cdot 22 \cdot 1) + (24 \cdot 1 \cdot 23 \cdot 22 \cdot 1) + (24 \cdot 23 \cdot 1 \cdot 22 \cdot 1) + (24 \cdot 23 \cdot 22 \cdot 1 \cdot 1)\) possibilities. 
+
+You may have noticed a pattern.
+
+There are always \(24 \cdot 23 \cdot 22\) possibilities for each placement of a and b.
+
+In terms of ordering, there are \({5 \choose 2} \cdot {3 \choose 3}\) ways to order the terms.
+
+\textcolor{red}{If you are interested in the \textit{why}, read Chapter 6.5 Example 7. This is not exam material.}
+
+\end{center}
+
+\question { There are 352 students lined up at the Campus Store to buy textbooks. 129 students are buying a math textbook. 74 students are buying a physics textbook. 34 of those students are buying both a math textbook and a physics textbook. How many students are not buying math/physics textbooks? } (6.1)
+
+\begin{center}
+
+Using the Inclusion-Exclusion principle...
+
+\(129 + 74 - 34\)
+
+169 students are buying a math or physics textbook.
+
+This means that \(352 - 169\) students are not buying math/physics textbooks.
+
+\end{center}
+
+\question { How many bit string of length 6 start with 11 or end with a 0. (6.1) }
+
+\begin{center}
+
+Case 1: The bit string starts with 11
+
+In this case, there are \(1 \cdot 1 \cdot 2 \cdot 2 \cdot 2 \cdot 2\), or \(2^4\) possibilities.
+\vspace{5px}
+
+Case 2: The bit string ends with 0.
+
+In this case, there are \(2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 1\), or \(2^5\) possibilities.
+
+\vspace{5px}
+
+Thus, there are a total of \(2^5 + 2^4\) possibilities.
+
+\end{center}
+
+\question { Suppose there are 47 sets of tables in a banquet hall. There are 872 people waiting to be seated. If each table must have the same amount of chairs, what is the minimum amount of chairs needed to seat everyone?} (6.2)
+
+\begin{center}
+
+Using the pigeon-hole principle, there have to be \(\lfloor \frac{872}{47} \rfloor \) tables.
+
+\end{center}
+
+\question { Consider 90 numbers of 25 digits. Let A be the collection of all subsets of these numbers.  Consider the sum of a set to be the summation of all its elements. Is it guaranteed that two of these subsets have the same sum?} (6.2)
+
+\begin{center}
+
+The collection of all subsets refers to a power set.
+
+The cardinality of the power set is \(2^{90}\), meaning there are \(2^{90}\) summations.
+
+Suppose all 90 numbers have the highest value possible.
+
+The maximum sum possible would be \(90 \cdot (10^{25}-1)\).
+
+This means that there are \(90 \cdot (10^{25} - 1) +1\) possible values of summations total, if we include 0.
+
+If \(2^{90} \geq 90 \cdot (10^{25} - 1) + 1\), then it is guaranteed that two subsets have the same sum.
+
+Because of the shear magnitude of the numbers, we will estimate and round off the numbers.
+
+\(2^{90} \geq 10^2 \cdot 10^{25}\)
+
+\(2^{90} \geq 10^{27}\)
+
+\(1024^{9} \geq 1000^{9}\)
+
+Trivially, this shows that \(2^{90}\) is larger than \(10^{27}\). By the pigeon-hole principle, there exists at least two subsets with the same sum.
+
+\end{center}
+
+\question { A deck of UNO cards consists of 108 cards. (6.3) }
+\begin{subparts}
+\subpart{How many permutations of 108 cards are there?}
+
+\begin{center}
+\(108!\)
+\end{center}
+
+\subpart{How many combinations of 108 cards are there?}
+
+\begin{center}
+\(108!\)
+\end{center}
+
+\subpart{If a player draws 5 cards, how many permutations of cards are there?}
+
+\begin{center}
+\(\frac{108!}{103!}\)
+\end{center}
+
+\subpart{If a player draws 5 cards, how many combinations of cards are there?}
+
+\begin{center}
+\(\frac{108!}{5!\cdot103!}\)
+\end{center}
+
+\subpart{How many permutations of 108 cards are there that start with a "1" card?}
+
+\begin{center}
+\(107!\)
+\end{center}
+
+\subpart{How many permutations of 108 cards are there that start with a "1" card followed by an "8" card?}
+
+\begin{center}
+\(106!\)
+\end{center}
+
+\end{subparts}
+
+\question { Consider the expansion \( (x + y)^{17}\). What is the coefficient of \(x^{12}y^5\)?} (6.4)
+
+\begin{center}
+
+\(17 \choose 5\)
+
+\(\frac{17!}{12! \cdot 5!}\) 
+
+\end{center}
+
+\question { Prove or disprove that \( \sum_{k=0}^{n} {n \choose k} = 2^n \).} (6.4)
+
+\begin{center}
+
+\(2^n\)
+
+\((1+1)^n\)
+
+\(\sum_{k=0}^n {n \choose k} 1^k \cdot 1^{n-k}\)
+
+\(\sum_{k=0}^n {n \choose k}\)
+
+\end{center}
+
+\question { Generalize the expansion of \( (x + y)^n \) using the binomial theorem.} (6.4)
+
+\begin{center}
+\( (x + y)^n \)
+
+\(\sum_{k=0}^n {n \choose k} x^{k} y^{n-k}\)
+
+\( {n \choose 0} x^k + {n \choose 1} x^{k-1}y^1 + {n \choose 2} x^{k-2}y^2 + ... + {n \choose n} y^n \)
+\end{center}
+
+\question { Prove or disprove that \( {n+1 \choose k} = { n \choose k-1 } + { n \choose k } \).} (6.4)
+
+\begin{center}
+
+\( { n \choose k-1 } + { n \choose k } \)
+
+\( \frac{n!}{(k-1)!(n-k+1)!} + \frac{n!}{(k)!(n-k)!} \)
+
+\( \frac{n!}{(k)!(n-k+1)!} \cdot (k + (n - k + 1)) \)
+
+\( \frac{n!}{(k)!(n-k+1)!} \cdot (n + 1) \)
+
+\( \frac{(n+1)!}{(k)!(n-k+1)!} \)
+
+\( {n+1 \choose k} \)
+
+\textcolor{blue}{Alternate, non-algebraic proof is given in Chapter 6.4 Theorem 2}
+
+\end{center}
+
+%----------------------------------------------------------------------------------------
+
+%	CHAPTER 7
+
+%----------------------------------------------------------------------------------------
+
+\vspace{10pt}
+{\Large Chapter 7}
+\vspace{2pt}
+
+\question { What is the probability that the sum of two rolled dice is 7?} (7.1)
+
+\begin{center}
+There are 36 (\(6^2\)) possibilities when rolling two dice.
+
+Only (6,1), (5,2), (4,3), (3,4), (2,5), (1,6) will get us a sum of 7.
+
+Therefore, there is a \(\frac{6}{36}\), or a \(\frac{1}{6}\) chance that the sum of two rolled dice is 7.
+\end{center}
+
+\question { What is the probability that you win the lottery, if you have to correctly pick 6 numbers from 0-24? (7.1) }
+
+\begin{center}
+Assuming order doesn't matter, there is only one winning combination.
+
+There are \(C(24, 6)\) combinations.
+
+Therefore, there is a \(\frac{1}{\frac{24!}{6! \cdot 18!}}\), or a \(\frac{6! \cdot 18!}{24!}\) possibility of winning the lottery.
+\end{center}
+
+\newpage
+
+\question { What is the probability that an 8-bit string contains at least two 0s? (7.1) }
+
+\begin{center}
+There is one string that contains only 1s.
+
+There are 8 strings that contain exactly 1 zero.
+
+There are \(2^8\) strings total.
+
+Therefore, there are \(2^8 - 8 - 1\) strings that contain at least two 0s.
+\end{center}
+
+\question { You are a contestant in a game show. Three doors are presented in front of you. Behind two of the doors, there are goats. Behind the last door, there is car. The host asks you to pick one of three doors. After you pick a door, the host reveals one of the other doors that has a goat. The host then asks you whether you want to switch doors, or stay with your previous choice. What do you do? Does it make a difference? Prove it. }
+
+\begin{center}
+
+There are two cases.
+\vspace{10px}
+
+Case 1: You initially choose the incorrect door.
+
+This case occurs \(\frac{2}{3}\) of the time.
+\vspace{10px}
+
+Case 2: You initially choose the correct door.
+
+This case occurs \(\frac{1}{3}\) of the time. 
+\vspace{10px}
+
+If you always switch, you will win \(\frac{2}{3}\) of the time. If you never switch, you will win \(\frac{1}{3}\) of the time.
+
+This means you should always switch.
+
+\textcolor{blue}{See Chapter 7.1 Example 10 if you are confused}
+
+\end{center}
+
+\end{questions}
+\vspace{5px}
+\begin{center} 
+\fbox{\parbox{5in}{\centering
+I hope this helped! There are a lot of concepts that I did not include, so make sure to take a look at the textbook too. Good luck on the exam!
+}}
+\end{center}
+
+\end{document}

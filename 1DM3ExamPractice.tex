@@ -1,0 +1,423 @@
+\documentclass{exam}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    }
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
+\DeclareMathOperator{\lcm}{lcm}
+
+\begin{document}
+
+\begin{center}
+\fbox{\parbox{6in}{\centering
+\textbf{CS1DM3: Discrete Mathematics for Computer Science \hfill April 9th 2022}\\[0pt]
+\hfill Made by Richie\\[5pt]
+{\Large{Practice Problems for Exam}}\\[5pt]
+\textit{Name:} \hfill \textit{ID:\hspace{25mm}}
+}}
+\end{center}
+
+%----------------------------------------------------------------------------------------
+
+%	CHAPTER 1
+
+%----------------------------------------------------------------------------------------
+
+
+\vspace{10pt}
+{\Large Chapter 1}
+\vspace{2pt}
+\begin{questions}
+
+\question {Construct a truth table for  \( (p \lor \neg q) \implies (p \land q ) \). (1.1)}
+
+\question Translate the following sentences into a propositional statement. (1.2)
+\begin{subparts}
+\subpart You can go on the roller coaster if and only if you are taller than Bryan and older than Rebecca.
+\subpart The mayor will keep his promises if he is re-elected as mayor.
+\subpart The mayor will keep his promises only if he is re-elected as mayor.
+\end{subparts}
+
+\question {Determine if \( (\neg p \lor \neg q \lor r) \land (\neg p \lor q \lor \neg s) \land (p \lor \neg q \lor \neg s) \land (\neg p \lor \neg r \lor \neg s) \land (p \lor q \lor \neg r) \land (p \lor \neg r \lor \neg s) \) is satisfiable. (1.3)}
+
+\question {Prove that \(  (p \lor q) \land (\neg p \lor r) \implies q \lor r \) only using equivalences (no rules of inferences!) (1.3)}
+
+\question {What are the negations of the following statements? (1.4)}
+\begin{subparts}
+\subpart \( \exists x (P(x) \implies Q(x)) \)
+\subpart \( \forall y (P(y) \land Q(y) \implies R(y) \lor S(y)) \)
+\end{subparts}
+
+\question {Let \( P(x, y) \) be the statement "\(x\) is friends with \(y\), where the domain consists of the world human population. Use quantifiers to express these statements. (1.5)}
+\begin{subparts}
+\subpart { Tyler is friends with everybody in the world. }
+\subpart { Meredith is friends with Charlie. }
+\subpart { Somebody is friends with everybody in the world. }
+\subpart { Somebody is friends with somebody. }
+\subpart { Everyone in the world is friends with somebody. }
+\subpart { Nobody is friends with themselves. }
+\end{subparts}
+
+\question {Determine if the following statements are valid. (1.5)}
+\begin{subparts}
+\subpart \( \exists x \forall y (xy = 1) \) where the domain is all real positive numbers.
+\subpart \( \forall x \exists y (xy = 1) \) where the domain is all real positive numbers.
+\end{subparts}
+
+\question {Show that the premises "We'll stay home and watch TV or we'll go take a walk" and "We'll go take a walk if and only if it's nice outside" implies the conclusion "We'll stay home or it's nice outside."} (1.6)
+
+\question {Show that the premises \( (p \land q) \lor r \) and \(r \implies s\) implies the conclusion \( p \lor s \).} (1.6)
+
+\question {Prove or disprove the following statements. (1.7)}
+\begin{subparts}
+\subpart \( |a + b| = |a| + |b| \).
+\subpart \( |ab| = |a||b| \).
+\subpart \( \sqrt{2} \) is irrational.
+\subpart If \( x\) is even, then \(x+n\) is odd for all odd numbers \(n\).
+\end{subparts}
+
+\question {True or False: There exists two irrational numbers \(x\) and \(y\) such that \(x^{y}\) is rational. (1.8) \\
+- If True, provide an example. \\
+- If False, prove it.} 
+
+%----------------------------------------------------------------------------------------
+
+%	CHAPTER 2
+
+%----------------------------------------------------------------------------------------
+
+\vspace{10pt}
+{\Large Chapter 2}
+\vspace{2pt}
+
+
+\question {What is the Cartesian product of \(A\) and \(B\) if \(A = \{1,2,3\}\) and \(B = \{b, c\}\)? (2.1) \\
+- Is \( A \times B \) = \( B \times A \)? \\
+- What is the Cartesian product of the sets \( \{1, 2\} \), \( \{x, y\} \), and \( \{a, b\} \)? }
+
+\question {What is the cardinality of the power set of the set \( \{1,2,3,4,5\} \)? (2.2) \\
+- What is the cardinality of the power set of \( A \times B \) if \(A = \{1,2,3\}\) and \(B = \{b, c\}\)? }
+
+\question {Prove the following.} (2.2)
+\begin{subparts}
+\subpart {\( \overline{A \cap B} = \overline{A} \cup \overline{B} \).} 
+\subpart {\( A \cap (B \cup C) = (A \cap B) \cup (A \cap C) \).} 
+\subpart {\( (A \cap B) \cup (A \cap \overline{B}) = A \).} 
+\subpart {\( (A - B) - C = (A - C) - (B - C) \).} 
+\subpart {\( (A \cup B) \subseteq (A \cup B \cup C) \).}
+\end{subparts}
+
+\question {Let \( A_i = \{0,1,2,3,4,...,i\}\). Find the following.} (2.2)
+\begin{subparts}
+\subpart { \( \cup_{i=0}^n A_i \) .}
+\subpart { \( \cap_{i=0}^n A_i \) .}
+\subpart { \( \cup_{i=3}^n A_i \) .}
+\subpart { \( \cap_{i=3}^n A_i \) .}
+\end{subparts}
+
+\question {Consider the multi-sets \( A = \{4 \cdot a, 3 \cdot b, 2 \cdot c\} \) and \( B = \{1 \cdot a, 2 \cdot c, 3 \cdot d\} \). (2.2)}
+\begin{subparts}
+\subpart { What is \( A \cup B \)? } 
+\subpart { \( A \cap B \). }
+\subpart { \( A + B \). } 
+\subpart { \( A - B \). } 
+\end{subparts}
+
+\question {Let \(f : \mathbb{R} \rightarrow \mathbb{Z} \) defined by \( f(x) = \lfloor \frac{x}{2} \rfloor \). Is this onto? Is this one-to-one?} (2.3)
+
+\question {Suppose \(g : A \rightarrow B \) and \(f : B \rightarrow C \), where \(f \circ g\) and \(f\) are injective. (2.3)}
+\begin{subparts}
+\subpart {Show that \(g\) must be injective, or give a counterexample.}
+\subpart {What if \(f \circ g\) and \(g\) are injective. Show that \(f\) must be injective, or give a counterexample.}
+\end{subparts}
+
+\question {Let \(g : \mathbb{Z} \times \mathbb{Z} \rightarrow \mathbb{Z} \) defined by \( g(m, n) = |m| - |n|\). Prove or disprove that this function is onto.} (2.3)
+
+\question {Prove or disprove the following. (2.3)}
+\begin{subparts}
+\subpart {\( \lfloor 2x \rfloor = \lfloor x \rfloor + \lfloor x + \frac{1}{2} \rfloor \).}
+\subpart {\( \lfloor 4x \rfloor = \lfloor x \rfloor + \lfloor x + \frac{1}{4} \rfloor + \lfloor x + \frac{1}{2} \rfloor + \lfloor x + \frac{3}{4} \rfloor \).}
+\subpart { \( \lceil \frac{x}{2} \rceil = \lfloor \frac{x+1}{2} \rfloor \).}
+\subpart { Given an odd integer \(n\), \( \lceil \frac{n^2}{4} \rceil = \frac{n^2 + 3}{4} \).}
+\end{subparts}
+
+\question {Find the following.} (2.4)
+\begin{subparts}
+\subpart {\( \sum_{i=1}^{25} \frac{8}{i(i+3)} \).} 
+\subpart {\( 9 \cdot \sum_{i=0}^{25} \frac{5^i}{3^{2-i}} \).} 
+\subpart {\( \sum_{i=1}^{4} \sum_{j=1}^{3} ij \).} 
+\end{subparts}
+
+\question {Solve the following recurrence relations. (2.4)}
+\begin{subparts}
+\subpart { \(a_n = -a_{n-1} \hspace{55px} a_0 = 5 \) }
+\subpart { \(a_n = a_{n-1} + 3 \hspace{45px} a_0 = 2 \) }
+\subpart { \(a_n = (n+1)a_{n-1} \hspace{31px} a_0 = 1 \) }
+\subpart { \(a_n = 2na_{n-1} \hspace{51px} a_0 = 7 \) }
+\subpart { \(a_n = -a_{n-1} + n - 1 \hspace{19px} a_0 = 8 \) }
+\end{subparts}
+
+\question {Is the sequence \( \{a_n\}\) a solution of the recurrence relation \(a_n = 8a_{n-1} - 16a_{n-2} \) if: (2.4)}
+\begin{subparts}
+\subpart {\(a_n = 0\).}
+\subpart {\(a_n = 1\).}
+\subpart {\(a_n = 2^n\).}
+\subpart {\(a_n = 4^n\).}
+\subpart {\(a_n = n4^n\).}
+\subpart {\(a_n = n^24^n\).}
+\end{subparts}
+
+\question {Prove or disprove the following.} (2.5)
+\begin{subparts}
+\subpart {The set of positive rational numbers are countable.}
+\subpart {The set of rational numbers are countable.}
+\subpart {The set of real numbers are countable.}
+\subpart { \(\mathbb{Z^+} \times \mathbb{Z^+} \) is countable.}
+\end{subparts}
+
+\question { The cardinality of \( \{\emptyset, \{\emptyset\}, \{\emptyset, \emptyset\}\} \) is 3.} (2.5)
+
+\question { Given the matrix 
+\( A =
+\begin{bmatrix}
+1 & 0 & 1\\
+0 & 1 & 0
+\end{bmatrix}
+\)
+, find \(A^T\) and \(A \odot A^T\). (2.6)
+}
+
+%----------------------------------------------------------------------------------------
+
+%	CHAPTER 3
+
+%----------------------------------------------------------------------------------------
+
+\vspace{10pt}
+{\Large Chapter 3}
+\vspace{2pt}
+
+\question {Use the Cashier's algorithm to make 64¢ using the least number of coins. (3.1) \\
+- Bonus: Write pseudo-code for the Cashier's algorithm using 25¢, 10¢, 5¢, and 1¢ coins.}
+
+\question {Find an accurate big-O of the following. Simplify where possible. Provide witnesses. (3.2)}
+\begin{subparts}
+\subpart { \( x^3 + x^2 + x + 5 \). }
+\subpart { \( x^2\log(2) + x\log^2(2) \). }
+\subpart { \( (x + e^x)(\ln(e^{5x})) + 999x \). }
+\subpart { \( \log(n!) \). }
+\subpart { \( \lceil x + 2 \rceil \cdot \lfloor \frac{x}{3} + \log^{20}(x) \rfloor \). }
+\subpart { \( \frac{x^7 + x^5}{x^4 + x^3 + 2x^2} \). }
+\subpart { \( \frac{x^4 + x^3 + 2x^2}{x^7 + x^5} \). }
+\end{subparts}
+
+\question {Prove or disprove that \( \frac{x^4 + x^3 + 2x^2}{x^7 + x^5} = O(1)\).} (3.2)
+
+\question {Suppose \( f(x) = O(g(x)) \). Show that \( g(x) = \Omega(f(x)) \).} (3.2)
+
+\question {Prove that \( n! \) is not \( O(2^n) \).} (3.2)
+
+\question {Prove that \( 1^k + 2^k + ... + n^k = O(n^{k+1}) \) for all \(k \in \mathbb{Z^+} \). (3.2)}
+
+%----------------------------------------------------------------------------------------
+
+%	CHAPTER 4
+
+%----------------------------------------------------------------------------------------
+
+\vspace{10pt}
+{\Large Chapter 4}
+\vspace{2pt}
+
+\question {Prove or disprove the following. (4.1) }
+\begin{subparts}
+\subpart { \( (a+b) \Mod{m} = (a \Mod{m} + b \Mod{m} ) \Mod{m} \). }
+\subpart { \( (ab) \Mod{m} = ( (a \Mod{m})(b \Mod{m}) ) \).}
+\subpart { If \(a \equiv b \Mod{m} \), then \( 2a \equiv 2b \Mod{m} \). }
+\subpart { If \(a \equiv b \Mod{m} \), then \( 2a \equiv 2b \Mod{2m} \). }
+\subpart { If \(a \equiv b \Mod{m} \), then \( a \equiv b \Mod{2m} \). }
+\subpart { If \(a \equiv b \Mod{2m} \), then \( a \equiv b \Mod{m} \). }
+\subpart { If \(a|bc\), then \(a|b\) and \(a|c\). }
+\subpart { If \(a|b\) and \(b|c\), then \(a|c\). }
+\subpart { \( a \Mod{d} = a - d \lfloor \frac{a}{d} \rfloor \) }
+\end{subparts}
+
+\question {Find the following. (4.1) }
+\begin{subparts}
+\subpart { \( (15^8 \Mod{24})^5 \Mod{16} \). }
+\subpart { \( ((15^8 \Mod{225})^5 \Mod{999})^{32} \) }
+\subpart { \( (50 +_{21} 75) \cdot_{21} 32 \). }
+\end{subparts}
+
+\question {Convert the following numbers. (4.2) }
+\begin{subparts}
+\subpart { Convert \( 156_{10} \) to binary. }
+\subpart { Convert \( 1010101101001_{2} \) to hexadecimal. }
+\subpart { Convert \( 101111011000_{2} \) to octal. }
+\subpart { Convert \( 156_{8} \) to binary. }
+\subpart { Convert \( A4E_{16} \) to binary. }
+\subpart { Convert \( A4E_{16} \) to decimal. }
+\subpart { Convert \( 10101110100_{2} \) to decimal. }
+\subpart { Convert \( 15623_{8} \) to decimal. }
+\end{subparts}
+
+\question {Find the sum or product of the following. (4.2) }
+\begin{subparts}
+\subpart { \( 10101110100_{2} + 101001_{2} \). }
+\subpart { \( 10101_{2} \cdot 101101_{2} \). }
+\subpart { \( 55123_{8} + 7743147_{8} \). }
+\subpart { \( 462_{8} \cdot 732_{8} \). }
+\subpart { \( D5E_{16} + B332_{16} \). }
+\subpart { \( 2D_{16} \cdot 3D_{16} \). }
+\end{subparts}
+
+\question { Given a decimal number \( n \), how many bits are needed to represent it in base 2? } (4.2)
+
+\question { Given a binary number \( n \), how many digits are needed to represent it in base 10? } (4.2)
+
+\question { Find the prime factorization of the following numbers. (4.3) }
+\begin{subparts}
+\subpart { \( 7007\). }
+\subpart { \( 123\). }
+\subpart { \( 166320\). }
+\subpart { \( 21\). }
+\end{subparts}
+
+\question { Find the gcd and lcm of the following numbers. (4.3) }
+\begin{subparts}
+\subpart { 1 and 166320. }
+\subpart { 21 and 166320. }
+\subpart { 123 and 166320. }
+\subpart { 7007 and 166320. }
+\subpart { 166320 and 166320. }
+\subpart { \(12!\) and \(15!\). }
+\end{subparts}
+
+\question { Given that \(a = 215\), \(\gcd(a,b) = 5\), and \(\lcm(a,b) = 4180890\), find b.} (4.3)
+
+%----------------------------------------------------------------------------------------
+
+%	CHAPTER 5
+
+%----------------------------------------------------------------------------------------
+
+\vspace{10pt}
+{\Large Chapter 5}
+\vspace{2pt}
+
+\question{ Prove that \( 3 | n^3 + 3n^2 + 2n \) for all integers \( n \geq 1 \). } (5.1)
+
+\question{ Prove the following summation rules. (5.1) }
+\begin{subparts}
+\subpart {\( \sum_{i=1}^{n} i = \frac{n(n+1)}{2} \) for all integers \( n \geq 1 \). }
+\subpart {\( \sum_{i=1}^{n} i^2 = \frac{n(n+1)(2n+1)}{6} \) for all integers \( n \geq 1 \). }
+\subpart {\( \sum_{i=1}^{n} i^3 = \frac{n^2(n+1)^2}{4} \) for all integers \( n \geq 1 \). }
+\subpart {\( \sum_{i=0}^{n} ar^i = \frac{ar^{n+1} - a}{r-1} \) for all integers \( n \geq 0 \) when \(r \neq 1 \). }
+\end{subparts}
+
+\question{ Prove that \( n < 2^n \) for all integers \( n \geq 1\). } (5.1)
+
+\question{ Prove that every integer \( n \geq 2 \) is a product of primes. } (5.2)
+
+\question{ Prove that \( \sum_{i=1}^{n} i = \frac{n(n+1)}{2} \) for all integers \( n \geq 1 \) using the well-ordering principle. } (5.2)
+
+\question{ Prove that every amount 18 cents or more can be formed using just 4-cent and 5-cent stamps. } (5.2)
+
+\question{ Suppose \(g_n\) is a recursively defined sequence. \(g_1 = 1\), \(g_2 = 2\), \(g_3 = 6\), and \(g_n = (n^3 - 3n^2 + 2n) \cdot g_{n-3} \) for all \( n \geq 4 \). Prove that \(g_n = n!\) for all integers \(n >= 1)\). } (5.2)
+
+\question { Let \(f_n\) be the \(n\)-th Fibonacci number, and 
+\( A =
+\begin{bmatrix}
+1 & 1\\
+1 & 0
+\end{bmatrix}
+\). Show that 
+\( A^n =
+\begin{bmatrix}
+f_{n+1} & f_{n}\\
+f_{n} & f_{n-1}
+\end{bmatrix}
+\) for \(n \geq 1\). We'll define \(f_0 = 0\), \(f_1 = 1\), \(f_2 = 1\). (5.2) }
+%----------------------------------------------------------------------------------------
+
+%	CHAPTER 6
+
+%----------------------------------------------------------------------------------------
+
+\vspace{10pt}
+{\Large Chapter 6}
+\vspace{2pt}
+
+\question {How many password possibilities of length 8 exist given the following restrictions? (6.1)}
+\begin{subparts}
+\subpart { Upper-case and lower-case letters are allowed. }
+\subpart { Upper-case letters, lower-case letters, and numbers are allowed. }
+\subpart { Upper-case letters, lower-case letters, and numbers are allowed. Password must contain one number, one capital, and one lower-case letter.}
+\textcolor{red}{This required 6.5 knowledge, which is not on the exam.}
+\subpart { Upper-case letters, lower-case letters, and numbers are allowed. First 2 characters of the password are the first 2 characters of your name. }
+\end{subparts}
+
+
+\question {How many strings (consisting of 5 unique lower-case letters) contain the letters "a" and "b", such that the letter "a" is always to the left of the letter "b"?} (6.1)
+
+\question { There are 352 students lined up at the Campus Store to buy textbooks. 129 students are buying a math textbook. 74 students are buying a physics textbook. 34 of those students are buying both a math textbook and a physics textbook. How many students are not buying math/physics textbooks? } (6.1)
+
+\question { How many bit string of length 6 start with 11 or end with a 0. (6.1) }
+
+\question { Suppose there are 47 sets of tables in a banquet hall. There are 872 people waiting to be seated. If each table must have the same amount of chairs, what is the minimum amount of chairs needed to seat everyone?} (6.2)
+
+\question { Consider 90 numbers of 25 digits. Let A be the collection of all subsets of these numbers.  Consider the sum of a set to be the summation of all its elements. Is it guaranteed that two of these subsets have the same sum?} (6.2)
+
+\question { A deck of UNO cards consists of 108 cards. (6.3) }
+\begin{subparts}
+\subpart{How many permutations of 108 cards are there?}
+\subpart{How many combinations of 108 cards are there?}
+\subpart{If a player draws 5 cards, how many permutations of cards are there?}
+\subpart{If a player draws 5 cards, how many combinations of cards are there?}
+\subpart{How many permutations of 108 cards are there that start with a "1" card?}
+\subpart{How many permutations of 108 cards are there that start with a "1" card followed by an "8" card?}
+\end{subparts}
+
+\question { Consider the expansion \( (x + y)^{17}\). What is the coefficient of \(x^{12}y^5\)?} (6.4)
+
+\question { Prove or disprove that \( \sum_{k=0}^{n} {n \choose k} = 2^n \).} (6.4)
+
+\question { Generalize the expansion of \( (x + y)^n \) using the binomial theorem.} (6.4)
+
+\question { Prove or disprove that \( {n+1 \choose k} = { n \choose k-1 } + { n \choose k } \).} (6.4)
+
+%----------------------------------------------------------------------------------------
+
+%	CHAPTER 7
+
+%----------------------------------------------------------------------------------------
+
+\vspace{10pt}
+{\Large Chapter 7}
+\vspace{2pt}
+
+\question { What is the probability that the sum of two rolled dice is 7?} (7.1)
+
+\question { What is the probability that you win the lottery, if you have to correctly pick 6 numbers from 0-24? (7.1) }
+
+\question { What is the probability that an 8-bit string contains at least two 0s? (7.1) }
+
+\question { You are a contestant in a game show. Three doors are presented in front of you. Behind two of the doors, there are goats. Behind the last door, there is car. The host asks you to pick one of three doors. After you pick a door, the host reveals one of the other doors that has a goat. The host then asks you whether you want to switch doors, or stay with your previous choice. What do you do? Does it make a difference? Prove it. }
+\end{questions}
+\vspace{5px}
+\begin{center} 
+\fbox{\parbox{5in}{\centering
+I hope this helped! There are a lot of concepts that I did not include, so make sure to take a look at the textbook too. Good luck on the exam!
+}}
+\end{center}
+
+\end{document}
