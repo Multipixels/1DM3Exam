@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.10.29)  9 APR 2023 00:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.10.29)  9 APR 2023 00:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -426,7 +426,7 @@ ed.
 Here is how much of TeX's memory you used:
  10612 strings out of 475385
  165682 string characters out of 2777850
- 533272 words of memory out of 3000000
+ 533386 words of memory out of 3000000
  31698 multiletter control sequences out of 15000+600000
  472413 words of font info for 41 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -449,7 +449,7 @@ sers/RIC/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb
 i10.pfb><C:/Users/RIC/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts
 /cm/cmtt10.pfb><C:/Users/RIC/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
 msfonts/symbols/msbm10.pfb>
-Output written on 1DM3ExamPracticeSolutions.pdf (27 pages, 279690 bytes).
+Output written on 1DM3ExamPracticeSolutions.pdf (27 pages, 279746 bytes).
 PDF statistics:
  416 PDF objects out of 1000 (max. 8388607)
  203 named destinations out of 1000 (max. 500000)

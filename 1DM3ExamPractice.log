@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.10.29)  9 APR 2023 00:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.10.29)  9 APR 2023 00:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -419,7 +419,7 @@ Package rerunfilecheck Info: File `1DM3ExamPractice.out' has not changed.
 Here is how much of TeX's memory you used:
  10565 strings out of 475385
  165139 string characters out of 2777850
- 531864 words of memory out of 3000000
+ 531885 words of memory out of 3000000
  31673 multiletter control sequences out of 15000+600000
  472245 words of font info for 40 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -441,7 +441,7 @@ sers/RIC/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb
 ><C:/Users/RIC/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmt
 i10.pfb><C:/Users/RIC/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts
 /symbols/msbm10.pfb>
-Output written on 1DM3ExamPractice.pdf (6 pages, 202204 bytes).
+Output written on 1DM3ExamPractice.pdf (6 pages, 202217 bytes).
 PDF statistics:
  318 PDF objects out of 1000 (max. 8388607)
  182 named destinations out of 1000 (max. 500000)
