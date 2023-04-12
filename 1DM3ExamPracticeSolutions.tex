@@ -20,7 +20,7 @@
 
 \begin{center}
 \fbox{\parbox{6in}{\centering
-\textbf{CS1DM3: Discrete Mathematics for Computer Science \hfill April 9th 2022}\\[0pt]
+\textbf{CS1DM3: Discrete Mathematics for Computer Science \hfill April 12th 2022}\\[0pt]
 \hfill Made by Richie\\[5pt]
 {\Large{Practice Problems for Exam - Solutions}}\\[5pt]
 \textit{Name:} \hfill \textit{ID:\hspace{25mm}}
@@ -109,8 +109,6 @@ The statement is satisfiable when \( p = T, q = T, r = T, s = F \).
 \question {Prove that \(  (p \lor q) \land (\neg p \lor r) \implies q \lor r \) only using equivalences (no rules of inferences!) (1.3)}
 
 \begin{center}
-
-\textcolor{red}{There were two typos in the original question, my apologies! The typo is fixed in the solution set.}
 
 \(  (p \lor q) \land (\neg p \lor r) \implies q \lor r \)\\
 \(  \neg[(p \lor q) \land (\neg p \lor r)] \lor (q \lor r) \)\\
@@ -617,8 +615,6 @@ You cannot use Distributive Set law to prove Distributive Set law on the exam.
 
 \begin{center}
 
-\textcolor{red}{There is a typo in the original question, my apologies! The typo is fixed in the solution set.}
-
 This function is not one-to-one. Take \(x_0 = 0, x_1 = 1\). 
 
 \(f(x_0) = f(x_1)\), therefore it cannot be one-to-one.
@@ -735,7 +731,7 @@ Case 2: \(k \in [\frac{1}{2}, 1) \)
 
 \newpage
 
-\subpart { \( \lceil \frac{x}{2} \rceil = \lfloor \frac{x+1}{2} \rfloor \).}
+\subpart { \( \lceil \frac{x}{2} \rceil = \lfloor \frac{x+1}{2} \rfloor \) such that \(x \in \mathbb{Z}\).}
 
 \begin{center}
 
@@ -818,8 +814,6 @@ Let \(n = 2k + 1\) where \(k \in \mathbb{Z}\).
 \subpart {\( 9 \cdot \sum_{i=0}^{25} \frac{{5^i}}{3^{2-i}} \).} 
 
 \begin{center}
-
-\textcolor{red}{There were errors in this question too, sorry! I completely forgot what a geometric sum was o.o}
 
 \( \sum_{i=0}^{25} 3^2 \cdot \frac{{5^{i}}}{3^{2-i}} \)
 
@@ -1944,8 +1938,6 @@ Prove \(  \sum_{i=1}^{n+1} i^3 = \frac{(n+1)^2(n+2)^2}{4} \).
 
 \begin{center}
 
-\textcolor{red}{Another typo. Summation should have started at 0, with base case of 0.}
-
 Base Case (\(n = 0\))
 
 \(\sum_{i=0}^{0} ar^i = a\)
@@ -2232,7 +2224,7 @@ f_{n+1} & f_{n}
 
 \begin{center}
 
-\( 61^8 \)
+\( 62^8 \)
 
 \end{center}
 
@@ -2242,13 +2234,13 @@ f_{n+1} & f_{n}
 
 \textcolor{red}{This one is tricky! This requires knowledge of 6.5, which is not expected on the exam. If you're still interested, read on.}
 
-If you just do \( 26 \cdot 26 \cdot 10 \cdot 61^5 \), you are assuming that the restrictions apply on the first 3 characters... but you have to consider ordering as well!
+If you just do \( 26 \cdot 26 \cdot 10 \cdot 62^5 \), you are assuming that the restrictions apply on the first 3 characters... but you have to consider ordering as well!
 
 There are \({8 \choose 1} \cdot {7 \choose 1} \cdot {6 \choose 6}\) unique ways of arranging the restrictions. 
 
-Each arrangement has \(26 \cdot 26 \cdot 10 \cdot 61^5\) possible character choices.
+Each arrangement has \(26 \cdot 26 \cdot 10 \cdot 62^5\) possible character choices.
 
-Therefore, there are \(8 \cdot 7 \cdot 6 \cdot 26^2 \cdot 10 \cdot 61^5\) possible passwords.
+Therefore, there are \(8 \cdot 7 \cdot 6 \cdot 26^2 \cdot 10 \cdot 62^5\) possible passwords.
 
 \textcolor{blue}{If this doesn't make sense, read Chapter 6.5 Example 7.}
 \textcolor{red}{Again, this is not exam material.}
@@ -2259,7 +2251,7 @@ Therefore, there are \(8 \cdot 7 \cdot 6 \cdot 26^2 \cdot 10 \cdot 61^5\) possib
 
 \begin{center}
 
-\( 1 \cdot 1 \cdot 61^6 \)
+\( 1 \cdot 1 \cdot 62^6 \)
 
 \end{center}
 
@@ -2334,7 +2326,7 @@ Thus, there are a total of \(2^5 + 2^4\) possibilities.
 
 \begin{center}
 
-Using the pigeon-hole principle, there have to be \(\lfloor \frac{872}{47} \rfloor \) tables.
+Using the pigeon-hole principle, there have to be \(\lceil \frac{872}{47} \rceil \) tables.
 
 \end{center}
 
@@ -2377,7 +2369,7 @@ Trivially, this shows that \(2^{90}\) is larger than \(10^{27}\). By the pigeon-
 \subpart{How many combinations of 108 cards are there?}
 
 \begin{center}
-\(108!\)
+\(1\)
 \end{center}
 
 \subpart{If a player draws 5 cards, how many permutations of cards are there?}
