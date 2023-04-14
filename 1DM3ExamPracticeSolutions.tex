@@ -186,13 +186,17 @@ The statement is satisfiable when \( p = T, q = T, r = T, s = F \).
 \subpart \( \exists x \forall y (xy = 1) \) where the domain is all real positive numbers.
 
 \begin{center}
-False. Suppose \(x = 1\). There exist \(y\) such that \(xy \neq 1\), (counterexample: \(y = 2\)), thus disproving the statement.
+False. Suppose such an \(x\) did exist. Then \(xy=1\) for some constant \(x\) for all \(y\).
+
+Therefore, \(y = \frac{1}{x}\). Thus, \(y\) can only have 1 value since \(x\) is constant.
+
+This contradicts the original statement that \(xy=1\) for some constant \(x\) for all \(y\).
 \end{center}
 
 \subpart \( \forall x \exists y (xy = 1) \) where the domain is all real positive numbers.
 
 \begin{center}
-True. \(x = \frac{1}{y}\). \(x\) is a real positive number for all positive real \(y\).
+True. \(y = \frac{1}{x}\). \(x\) is a real positive number for all positive real \(y\).
 
 \vspace{5px} \textcolor{blue}{See Chapter 1.5, Example 4 if there's any confusion.}
 \end{center}
@@ -401,13 +405,13 @@ Using this proof, we have given one of two possible solutions. We don't know whi
 \question {What is the Cartesian product of \(A\) and \(B\) if \(A = \{1,2,3\}\) and \(B = \{b, c\}\)? (2.1) 
 
 \begin{center}
-\( \{ \{1,b\}, \{1,c\}, \{2,b\}, \{2,c\}, \{3,b\}, \{3,c\} \} \)
+\( \{ (1,b), (1,c), (2,b), (2,c), (3,b), (3,c) \} \)
 \end{center}
 
 - Is \( A \times B \) = \( B \times A \)? \textcolor{red}{No.}\\
 - What is the Cartesian product of the sets \( \{1, 2\} \), \( \{x, y\} \), and \( \{a, b\} \)? }
 \begin{center}
-\( \{ \{1,x,a\}, \{1,x,b\}, \{1,y,a\}, \{1,y,b\}, \{2,x,a\}, \{2,x,b\}, \{2,y,a\}, \{2,y,b\} \} \)
+\( \{ (1,x,a), (1,x,b), (1,y,a), (1,y,b), (2,x,a), (2,x,b), (2,y,a), (2,y,b) \} \)
 \end{center}
 
 \question {What is the cardinality of the power set of the set \( \{1,2,3,4,5\} \)? (2.2) \\
@@ -711,12 +715,14 @@ Let \(x = n + k\), such that \(n \in \mathbb{Z}, k \in [0, 1) \).
 Case 1: \(k \in [0, \frac{1}{2}) \)
 
 \( 2n + 0 = 2n + 0 + 0 \)
+
 \( 2n = 2n\)
 \vspace{5px}
 
 Case 2: \(k \in [\frac{1}{2}, 1) \)
 
 \( 2n + 1 = 2n + 0 + 1 \)
+
 \( 2n + 1 = 2n + 1\)
 
 \end{center}
@@ -2318,7 +2324,7 @@ In this case, there are \(2 \cdot 2 \cdot 2 \cdot 2 \cdot 2 \cdot 1\), or \(2^5\
 
 \vspace{5px}
 
-Thus, there are a total of \(2^5 + 2^4\) possibilities.
+Thus, there are a total of \(2^5 + 2^4 - 2^3\) possibilities.
 
 \end{center}
 
@@ -2439,6 +2445,10 @@ Trivially, this shows that \(2^{90}\) is larger than \(10^{27}\). By the pigeon-
 \( { n \choose k-1 } + { n \choose k } \)
 
 \( \frac{n!}{(k-1)!(n-k+1)!} + \frac{n!}{(k)!(n-k)!} \)
+
+\( \frac{n! \cdot k}{(k)!(n-k+1)!} + \frac{n! \cdot (n-k+1) }{(k)!(n-k+1)!} \)
+
+\( \frac{n!}{(k!)(n-k+1)!} \cdot (k + n-k+1) \)
 
 \( \frac{n!}{(k)!(n-k+1)!} \cdot (k + (n - k + 1)) \)
 
