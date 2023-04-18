@@ -442,30 +442,23 @@ Therefore, the cardinality of the power set is \(2^{3*2}\).
 
 You cannot use De Morgan's Set Law to prove De Morgan's Set Law on the exam.
 
-\( \overline{A \cap B} = \overline{A} \cup \overline{B} \) if they are subsets of each other.
+\( \overline{A \cap B} = \overline{A} \cup \overline{B} \)
 
-\( \overline{A \cap B} \subseteq \overline{A} \cup \overline{B} \)
+\( \{ x | x \in \overline{A \cap B}  \} \)
 
-\( x \in \overline{A \cap B} \)
+\( \{ x | x \notin {A \cap B}  \} \)
 
-\( x \notin {A \cap B} \)
+\( \{ x | \neg (x \in {A \cap B})  \} \)
 
-\( \neg (x \in {A \cap B}) \)
+\( \{ x | \neg ( (x \in A) \land (x \in B)  \} ) \)
 
-\( \neg ( (x \in A) \land (x \in B) ) \)
+\( \{ x | \neg(x \in A) \lor \neg (x \in B) \} \)
 
-\( \neg(x \in A) \lor \neg (x \in B) \)
+\( \{ x | (x \notin A) \lor (x \notin B) \} \)
 
-\( (x \notin A) \lor (x \notin B) \)
+\( \{ x | (x \in \overline{A}) \lor (x \in \overline{B}) \} \)
 
-\( (x \in \overline{A}) \lor (x \in \overline{B}) \)
-
-\( x \in \overline{A} \cup \overline{B} \)
-\vspace{5mm}
-
-\( \overline{A} \cup \overline{B} \subseteq \overline{A \cap B} \)
-
-\textcolor{blue}{Repeat previous process but backwards. (Please show your full work here too on the exam, but for the sake of time, I won't do it.)}
+\( \{ x | x \in \overline{A} \cup \overline{B} \} \)
 
 \end{center}
 
@@ -475,27 +468,21 @@ You cannot use De Morgan's Set Law to prove De Morgan's Set Law on the exam.
 
 You cannot use Distributive Set law to prove Distributive Set law on the exam.
 
-\( A \cap (B \cup C) \subseteq (A \cap B) \cup (A \cap C) \)
+\( A \cap (B \cup C) = (A \cap B) \cup (A \cap C) \)
 
-\( x \in A \cap (B \cup C)\)
+\( \{ x | x \in A \cap (B \cup C) \} \)
 
-\( (x \in A) \land (x \in B \cup C)\)
+\( \{ x | (x \in A) \land (x \in B \cup C) \}\)
 
-\( (x \in A) \land (x \in B \cup C)\)
+\( \{ x | (x \in A) \land (x \in B \cup C) \}\)
 
-\( (x \in A) \land ((x \in B) \lor (x \in C))\)
+\( \{ x | (x \in A) \land ((x \in B) \lor (x \in C)) \}\)
 
-\( ((x \in A) \land (x \in B)) \lor ((x \in A) \land (x \in C))\)
+\( \{ x | ((x \in A) \land (x \in B)) \lor ((x \in A) \land (x \in C)) \}\)
 
-\( (x \in A \cap B) \lor (x \in A \cap C)\)
+\( \{ x | (x \in A \cap B) \lor (x \in A \cap C) \}\)
 
-\( x \in (A \cap B) \cup (A \cap C)\)
-
-\vspace{5mm}
-
-\( (A \cap B) \cup (A \cap C) \subseteq  A \cap (B \cup C) \)
-
-\textcolor{blue}{Repeat previous process but backwards. (Please show your full work here too on the exam, but for the sake of time, I won't do it.)}
+\( \{ x | x \in (A \cap B) \cup (A \cap C) \}\)
 
 \end{center}
 
@@ -1289,9 +1276,13 @@ Suppose \(x\) is \(O(\log^{20}(x))\)
 
 \(x \leq C\log^{20}(x)\)
 
-\(\sqrt[20]{x} \leq C\log{x}\)
+\(x \leq \log^{20}{x^C}\)
 
-\(10^{\sqrt[20]{x}} \leq Cx\)
+\(\sqrt[20]{x} \leq \log{x^C}\)
+
+\(10^{\sqrt[20]{x}} \leq x^C\)
+
+
 
 This is impossible. An exponential function will always grow faster than a polynomial for big x.
 
